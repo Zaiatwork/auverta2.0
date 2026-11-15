@@ -1,7 +1,12 @@
-import type { NextConfig } from 'next'
+﻿import type { NextConfig } from 'next'
+
+// PAGES=1 builds the static GitHub Pages preview (served under /auverta2.0).
+const pages = process.env.PAGES === '1'
 
 const nextConfig: NextConfig = {
+  ...(pages && { output: 'export', basePath: '/auverta2.0', trailingSlash: true }),
   images: {
+    unoptimized: pages,
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
       { protocol: 'https', hostname: 'cdn.prod.website-files.com' },
