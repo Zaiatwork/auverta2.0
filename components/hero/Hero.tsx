@@ -1,5 +1,4 @@
-import Image from 'next/image'
-import FadeIn from '@/components/ui/FadeIn'
+import MaskedHeading from '@/components/ui/MaskedHeading'
 import SiteHeader from './SiteHeader'
 import { HERO } from '@/content/hero'
 
@@ -8,17 +7,24 @@ export default function Hero() {
     <section className="relative min-h-svh overflow-hidden bg-white">
       <SiteHeader />
 
-      <h1 className="px-5 pt-[28svh] text-center font-display text-[clamp(3rem,12.5vw,5rem)] uppercase leading-[1.43] text-violet lg:pt-[17.4vw] xl:text-[6.25vw]">
-        {HERO.title.map((line, i) => (
-          <span key={line} className="line-reveal block overflow-hidden">
-            <span style={{ '--d': `${150 + i * 120}ms` } as React.CSSProperties}>{line}</span>
-          </span>
-        ))}
-      </h1>
-
-      <FadeIn delay={700} className="absolute left-[76.6%] top-[83%]">
-        <Image src="/hero/cursor.svg" alt="" width={47} height={47} unoptimized priority className="-rotate-[9.05deg]" />
-      </FadeIn>
+      <div className="mx-auto w-[calc(100%-2.5rem)] pt-[28svh] lg:w-[57.5%] lg:pt-[17.4vw]">
+        {/* width = 9.2em, so the title breaks into the 3 Figma lines */}
+        <MaskedHeading
+          tag="h1"
+          text={HERO.title.join(' ')}
+          src="/hero/title-fill.svg"
+          className="font-display text-violet"
+          weight={400}
+          tracking={0}
+          lineHeight={1.43}
+          textScale={0.1087}
+          reveal="rise"
+          stagger={0.05}
+          letterLift={0.14}
+          trigger="mount"
+          fillScale={1.2}
+        />
+      </div>
     </section>
   )
 }

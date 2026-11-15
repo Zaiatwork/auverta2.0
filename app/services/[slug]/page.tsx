@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { SERVICES } from '@/content/services'
 import { pageMeta } from '@/lib/seo'
-import { PageStub } from '@/components/ui/PageStub'
+import ServicePlaceholder from '@/components/ui/ServicePlaceholder'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -20,5 +20,5 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ServicePage({ params }: Props) {
   const s = find((await params).slug)
   if (!s) notFound()
-  return <PageStub eyebrow="Service" title={s.title} note="Service page arrives in milestone M4." />
+  return <ServicePlaceholder title={s.title} />
 }

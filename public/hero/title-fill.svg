@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice"><!-- Hero title fill (masked by the letters). Swap for final artwork any time. -->
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5a1cff"/><stop offset=".6" stop-color="#ff3fa4"/><stop offset="1" stop-color="#ff7a45"/></linearGradient>
+<radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#c8ff00" stop-opacity=".95"/><stop offset="1" stop-color="#c8ff00" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<circle cx="1180" cy="700" r="380" fill="url(#glow)"/>
+<circle cx="360" cy="180" r="260" fill="#130d2a" fill-opacity=".35"/>
+<g fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="6" stroke-linecap="round">
+<path d="M-40 260 C 200 120, 420 400, 660 260 S 1100 120, 1360 300 S 1640 260, 1700 220"/>
+<path d="M-40 440 C 220 300, 440 580, 680 440 S 1120 300, 1380 480 S 1640 440, 1700 400"/>
+<path d="M-40 620 C 240 480, 460 760, 700 620 S 1140 480, 1400 660 S 1640 620, 1700 580"/>
+</g>
+<g fill="#fff" fill-opacity=".7"><circle cx="520" cy="560" r="14"/><circle cx="900" cy="300" r="10"/><circle cx="1260" cy="520" r="16"/><circle cx="240" cy="700" r="9"/></g>
+</svg>
