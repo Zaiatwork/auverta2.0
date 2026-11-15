@@ -1,0 +1,11 @@
+.wipe { position: fixed; inset: 0; z-index: 400; pointer-events: none; }
+.wl { position: absolute; inset: 0; clip-path: polygon(0 110%, 100% 110%, 100% 110%, 0 110%); }
+.a { background: var(--violet); }
+.b { background: var(--lime); } /* transition band, gone in under two seconds */
+.c { background: var(--ink); }
+.mid {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: var(--space-2); opacity: 0; z-index: 2; text-align: center; padding: 0 var(--pad);
+}
+.midAuva { width: clamp(110px, 16vw, 200px); }
+.label { font-size: var(--text-display); color: var(--soft); }

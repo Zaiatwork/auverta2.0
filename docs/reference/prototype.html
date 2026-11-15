@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auverta — One Studio. Zero Juggling.</title>
+<meta name="description" content="Auverta is a full-service digital agency. Brand, web, AI content and marketing, all under one roof.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ============ TOKENS (the rulebook) ============ */
+  :root{
+    --violet:#5a1cff; --lime:#c8ff00; --ink:#0b0b12; --pink:#ff3fa4; --soft:#f3efff;
+    --t-s:.875rem; --t-b:1rem; --t-m:1.25rem; --t-l:1.75rem; --t-xl:2.5rem; --t-2xl:4rem;
+    --t-d:clamp(2.4rem,6.5vw,6rem); --t-hero:clamp(3rem,11.5vw,11.5rem);
+    --s1:.5rem; --s2:1rem; --s3:1.5rem; --s4:2rem; --s6:3rem; --s8:4rem;
+    --sec-s:clamp(3rem,6vw,4.5rem); --sec-m:clamp(4.5rem,9vw,7rem); --sec-l:clamp(6rem,13vw,10rem);
+    --pad:clamp(1.25rem,4vw,3.5rem); --gap:clamp(.75rem,1.6vw,1.5rem); --r:28px;
+    --ease-out:cubic-bezier(.16,1,.3,1); --ease-io:cubic-bezier(.7,0,.2,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  [hidden]{display:none!important}
+  body{font-family:'Inter',system-ui,sans-serif;font-size:var(--t-b);background:var(--violet);color:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.5}
+  a{color:inherit;text-decoration:none}
+  :focus-visible{outline:3px solid var(--focus,var(--lime));outline-offset:3px}
+  p{max-width:65ch}
+  .h{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;letter-spacing:-.045em;line-height:.92}
+  .ch{display:inline-block;will-change:transform}
+  .eyebrow{font-size:var(--t-s);letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+  .skip{position:fixed;left:var(--s2);top:-4rem;background:var(--lime);color:var(--ink);padding:.6rem 1rem;border-radius:99px;z-index:700;font-weight:500}
+  .skip:focus{top:var(--s2)}
+  html.lenis,html.lenis body{height:auto}
+  .lenis.lenis-smooth{scroll-behavior:auto!important}
+  @keyframes bob{50%{translate:0 -14px}}
+  @keyframes pulse{70%{box-shadow:0 0 0 10px rgba(200,255,0,0)}}
+  @keyframes zz{0%{opacity:0;translate:0 8px}50%{opacity:1}100%{opacity:0;translate:6px -14px}}
+
+  /* Surfaces */
+  .sec{padding:var(--sec-m) var(--pad)}.sec--s{padding-block:var(--sec-s)}.sec--l{padding-block:var(--sec-l)}
+  .on-violet{background:var(--violet);color:#fff}
+  .on-ink{background:var(--ink);color:#fff}
+  .on-soft{background:var(--soft);color:var(--ink);--focus:var(--violet)}
+  /* 12-col grid (4 on mobile) */
+  .g{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap)}
+  .g>*{grid-column:span var(--c,12)}
+  @media(max-width:720px){.g{grid-template-columns:repeat(4,1fr)}.g>*{grid-column:span var(--cm,4)}}
+  /* Placeholder flags: delete these 3 rules to remove all flags */
+  .ph{outline:2px dashed color-mix(in srgb,currentColor 45%,transparent);outline-offset:6px;position:relative}
+  .ph::before{content:"PLACEHOLDER";position:absolute;top:-.95rem;left:.75rem;font:500 10px/1 'Inter',sans-serif;letter-spacing:.14em;background:var(--lime);color:var(--ink);padding:3px 8px;border-radius:99px;z-index:2}
+  .ph--q::before{display:none}
+
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;gap:var(--s1);background:var(--lime);color:var(--ink);font-weight:500;padding:.85rem 1.5rem;border-radius:999px;border:0;font-family:inherit;font-size:var(--t-b);transition:transform .35s var(--ease-out),box-shadow .35s var(--ease-out)}
+  .btn:hover{transform:translateY(-3px);box-shadow:0 6px 0 var(--ink)}
+  .on-soft .btn{background:var(--ink);color:#fff}.on-soft .btn:hover{box-shadow:0 6px 0 var(--violet)}
+
+  /* ============ AUVA ============ */
+  .auva{width:100%;height:auto;display:block;overflow:visible}
+  .auva .eL,.auva .eR{transform-box:fill-box;transform-origin:center}
+  .auva .sL,.auva .sR,.auva .mw,.auva .mf,.auva .gl,.auva .zzz{display:none}
+  .auva[data-mood=sleep] .eL,.auva[data-mood=sleep] .eR,.auva[data-mood=sleep] .ms{display:none}
+  .auva[data-mood=sleep] .sL,.auva[data-mood=sleep] .sR,.auva[data-mood=sleep] .mf,.auva[data-mood=sleep] .zzz{display:block}
+  .auva[data-mood=wow] .ms{display:none}.auva[data-mood=wow] .mw{display:block}
+  .auva[data-mood=wink] .eR{display:none}.auva[data-mood=wink] .sR{display:block}
+  .auva[data-mood=cool] .gl{display:block}
+  .auva .zzz text{animation:zz 2s infinite;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;fill:var(--lime)}
+  .auva .zzz text:nth-child(2){animation-delay:.7s}
+  .bubble{position:absolute;left:-10%;top:-6%;background:#fff;color:var(--ink);padding:.6rem 1rem;border-radius:18px 18px 18px 4px;font-weight:500;font-size:var(--t-s);white-space:nowrap;z-index:5;pointer-events:none}
+
+  /* ============ CURSOR / SPARKS / BAR ============ */
+  .cursor{position:fixed;top:0;left:0;width:14px;height:14px;border-radius:50%;background:#fff;mix-blend-mode:difference;pointer-events:none;z-index:600;opacity:0;display:grid;place-items:center}
+  .cursor__label{font-size:.78rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);opacity:0}
+  .cursor.is-label{mix-blend-mode:normal;background:var(--lime)}.cursor.is-label .cursor__label{opacity:1}
+  .sparks{position:fixed;inset:0;pointer-events:none;z-index:55}
+  .spark{position:absolute;left:0;top:0;width:22px;height:22px;margin:-11px 0 0 -11px;fill:var(--lime);opacity:0}
+  .spark:nth-child(3n){fill:var(--pink)}.spark:nth-child(3n+1){fill:#fff}
+  .pbar{position:fixed;top:0;left:0;right:0;height:4px;background:var(--lime);transform:scaleX(0);transform-origin:left;z-index:90}
+  @media(hover:hover) and (pointer:fine){body,a,button,summary{cursor:none}}
+  @media(hover:none),(pointer:coarse){.cursor,.sparks,.peek{display:none}}
+
+  /* ============ WIPE + PRELOADER ============ */
+  .wipe{position:fixed;inset:0;z-index:400;pointer-events:none}
+  .wl{position:absolute;inset:0;clip-path:polygon(0 110%,100% 110%,100% 110%,0 110%)}
+  .wl--a{background:var(--violet)}.wl--b{background:var(--lime)}.wl--c{background:var(--ink)}
+  .wipe__mid{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--s2);opacity:0;z-index:2;text-align:center;padding:0 var(--pad)}
+  .wipe__auva{width:clamp(110px,16vw,200px)}
+  .wipe__label{font-size:var(--t-d);color:var(--lime)}
+  .pre{position:fixed;inset:0;z-index:500;background:var(--ink);display:grid;place-items:center}
+  .pre__auva{width:clamp(150px,22vw,260px)}
+  .pre__hi{position:absolute;left:0;right:0;bottom:30%;text-align:center;font-size:var(--t-xl);color:#fff;opacity:0}
+  .pre__count{position:absolute;left:var(--pad);bottom:var(--pad);font-size:clamp(5rem,20vw,16rem);color:var(--lime);line-height:.8}
+  .pre__label{position:absolute;right:var(--pad);bottom:var(--pad);font-size:var(--t-s);letter-spacing:.2em;text-transform:uppercase;opacity:.7}
+
+  /* ============ NAV ============ */
+  .nav{position:fixed;top:1rem;left:50%;transform:translateX(-50%);z-index:80;display:flex;align-items:center;gap:var(--s3);background:rgba(11,11,18,.9);backdrop-filter:blur(10px);padding:.55rem .6rem .55rem 1.1rem;border-radius:999px;width:min(94vw,700px);justify-content:space-between;color:#fff}
+  .logo{display:flex;align-items:center;gap:var(--s1);font-family:'Bricolage Grotesque',sans-serif;font-weight:800}
+  .logo svg{width:22px;height:22px;fill:var(--lime)}
+  .nav__links{display:flex;gap:var(--s3);font-size:var(--t-s);list-style:none}
+  .nav__links a{display:inline-block;min-width:3.4em}.nav__links a:hover{color:var(--lime)}
+  @media(max-width:640px){.nav__links{display:none}}
+  .nav .btn{padding:.6rem 1.1rem;font-size:var(--t-s);background:var(--lime);color:var(--ink)}
+
+  /* ============ HERO ============ */
+  .hero{position:relative;min-height:100svh;padding:8rem var(--pad) var(--s6);display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+  .tag{align-self:flex-start;display:inline-flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.14);padding:.45rem .9rem;border-radius:999px;font-size:var(--t-s);margin-bottom:var(--s3)}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--lime);animation:pulse 2s infinite}
+  .hero__title{font-size:var(--t-hero);position:relative;z-index:2}
+  .ln{display:block;overflow:hidden;padding:.04em 0 .12em}.in{display:inline-block}
+  .hero__title .ln:nth-child(2) .in{color:var(--lime)}
+  .hero__sub{max-width:32rem;margin:var(--s3) 0 var(--s3);font-size:var(--t-m);opacity:.92;position:relative;z-index:2}
+  .hero__row{display:flex;flex-wrap:wrap;gap:var(--s3);align-items:center;position:relative;z-index:2}
+  .picker{display:flex;flex-wrap:wrap;gap:var(--s1);align-items:center}
+  .picker>span{font-size:var(--t-s);opacity:.85;margin-right:var(--s1)}
+  .pill{background:transparent;color:inherit;border:0;font:inherit;font-weight:500;font-size:var(--t-s);padding:.7rem 1.1rem;border-radius:999px;box-shadow:inset 0 0 0 2px color-mix(in srgb,currentColor 50%,transparent);transition:background .3s var(--ease-out),color .3s,box-shadow .3s}
+  .pill:hover,.pill[aria-pressed=true]{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 2px #fff}
+  .on-soft .pill:hover,.on-soft .pill[aria-pressed=true]{background:var(--ink);color:#fff;box-shadow:inset 0 0 0 2px var(--ink)}
+  .hero__auva{position:absolute;right:calc(var(--pad) - 1rem);top:7rem;width:clamp(170px,28vw,420px);z-index:1;animation:bob 5s ease-in-out infinite}
+
+  /* Marquee */
+  .marq{background:var(--ink);color:#fff;transform:rotate(-2.5deg);margin:-2rem -6vw 0;padding:1.2rem 0;overflow:hidden;white-space:nowrap;position:relative;z-index:3}
+  .marq__track{display:inline-flex;gap:var(--s4);will-change:transform}
+  .marq__item{font-size:var(--t-xl);display:inline-flex;align-items:center;gap:var(--s4);text-transform:uppercase}
+  .marq__item::after{content:"✦";color:var(--lime);font-size:.6em}
+
+  /* Story */
+  .story{background:var(--violet)}
+  .stage{position:relative;height:100svh;overflow:hidden}
+  .story__copy{position:absolute;top:12%;left:0;right:0;display:grid;place-items:center;text-align:center;padding:0 var(--pad);z-index:3}
+  .story__copy p{grid-area:1/1;font-size:var(--t-d);max-width:none}
+  .story__b{opacity:0;color:var(--lime)}
+  .story__auva{position:absolute;--aw:clamp(150px,22vw,320px);width:var(--aw);left:calc(50% - var(--aw)/2);bottom:5%;z-index:2}
+  .chip{position:absolute;width:clamp(48px,6vw,84px);aspect-ratio:1;z-index:1}
+  .chip__in{width:100%;height:100%;display:grid;place-items:center;border-radius:24%;background:var(--bg,#fff);box-shadow:0 8px 0 var(--ink);rotate:var(--r,0deg);animation:bob 4s ease-in-out infinite;animation-delay:var(--d,0s)}
+  .chip svg{width:48%;height:48%;fill:var(--ic,var(--violet))}
+
+  /* Proof (placeholder) */
+  .proof h2{font-size:var(--t-xl);margin:var(--s2) 0 var(--s4)}
+  .logos{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:var(--gap);margin-bottom:var(--s6)}
+  .logo-ph{display:grid;place-items:center;height:72px;border-radius:var(--s2);font-size:var(--t-s);opacity:.8}
+  .stat b{display:block;font-size:var(--t-2xl);color:var(--violet)}.stat span{font-size:var(--t-s)}
+
+  /* Paths + levers */
+  .paths h2{font-size:var(--t-d);max-width:14ch}
+  .paths__grid{margin-top:var(--s6)}
+  .path{background:rgba(255,255,255,.08);border-radius:var(--r);padding:var(--s4);min-height:380px;display:flex;flex-direction:column;justify-content:space-between;gap:var(--s3);transition:background .5s var(--ease-out),color .5s var(--ease-out),transform .5s var(--ease-out)}
+  .path:hover{transform:translateY(-6px)}
+  .path.is-active{background:var(--soft);color:var(--ink);--focus:var(--violet)}
+  .path.is-active .btn{background:var(--ink);color:#fff}
+  .path h3{font-size:var(--t-xl);margin:var(--s2) 0}
+  .levers{margin-top:var(--sec-s);display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--gap)}
+  .levers__head{grid-column:1/-1;font-size:var(--t-l)}
+  .lever b{display:block;font-size:var(--t-2xl);color:transparent;-webkit-text-stroke:2px #fff;transition:color .6s var(--ease-out)}
+  .lever.is-on b{color:var(--lime);-webkit-text-stroke-color:var(--lime)}
+  .lever p{margin-top:var(--s1);opacity:.85}
+
+  /* Divisions */
+  .divs h2{font-size:var(--t-d);margin-bottom:var(--s2)}
+  .divs__sub{margin-bottom:var(--s6);opacity:.85}
+  .div{border-radius:var(--r);padding:var(--s4);box-shadow:inset 0 0 0 2px rgba(255,255,255,.25);transition:background .5s var(--ease-out);min-height:360px}
+  .div:hover{background:var(--violet)}
+  .div h3{font-size:var(--t-xl);margin-bottom:var(--s1)}
+  .div ul{list-style:none;margin-top:var(--s4)}
+  .div li{padding:.8rem 0;box-shadow:inset 0 1px 0 rgba(255,255,255,.2);display:flex;justify-content:space-between}
+  .div li::after{content:"→";opacity:.6}
+
+  /* One idea, many formats */
+  .idea h2{font-size:var(--t-d);margin:var(--s1) 0 var(--s3)}
+  .idea__chips{display:flex;flex-wrap:wrap;gap:var(--s1);margin-bottom:var(--s6);align-items:center}
+  .mocks{align-items:stretch}
+  .mock{position:relative;border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;background:var(--violet);color:#fff;min-height:260px}
+  .mock figcaption{position:absolute;left:var(--s2);bottom:var(--s2);font-size:var(--t-s);background:var(--soft);color:var(--ink);padding:.25rem .75rem;border-radius:99px;z-index:3}
+  .mw__top{display:flex;align-items:center;gap:6px;padding:.8rem var(--s2);background:var(--ink)}
+  .mw__top i{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.35)}
+  .mw__top span{margin-left:var(--s1);font-size:.75rem;opacity:.7}
+  .mw__body{position:relative;padding:var(--s4) var(--s4) 4rem;flex:1}
+  .mw__body h3{font-size:var(--t-xl);max-width:12ch;margin:var(--s1) 0}
+  .mw__body p{font-size:var(--t-s);opacity:.9}
+  .mw__btn{display:inline-block;margin-top:var(--s2);background:var(--lime);color:var(--ink);font-size:var(--t-s);font-weight:500;padding:.6rem 1.1rem;border-radius:99px}
+  .mw__auva{position:absolute;right:var(--s3);bottom:var(--s2);width:clamp(70px,10vw,120px)}
+  .mock--post{background:var(--ink);justify-content:space-between;padding:var(--s4);aspect-ratio:1}
+  .mock--post h3{font-size:var(--t-xl);max-width:10ch}
+  .mock--post .pa{width:34%;align-self:flex-end;margin-bottom:var(--s3)}
+  .mock--video{background:var(--violet);aspect-ratio:9/16;justify-content:flex-end;padding:var(--s3);padding-bottom:4rem}
+  .mock--video .play{position:absolute;top:50%;left:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:var(--lime);display:grid;place-items:center}
+  .mock--video .play svg{width:28px;height:28px;fill:var(--ink)}
+  .mock--video h3{font-size:var(--t-l)}
+  .mock--banner{background:var(--ink);flex-direction:row;align-items:center;justify-content:space-between;gap:var(--s3);padding:var(--s3) var(--s4) 3.5rem;min-height:160px}
+  .mock--banner h3{font-size:var(--t-l);max-width:16ch}
+  .mock--banner .pa{width:clamp(60px,8vw,100px);flex:none}
+  @media(max-width:720px){.mock--video{aspect-ratio:auto;min-height:340px}.mock--banner{flex-direction:column;align-items:flex-start}}
+
+  /* Work */
+  .work{background:var(--ink);color:#fff}
+  .work__head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:var(--s6);gap:var(--s2);flex-wrap:wrap}
+  .work__head h2{font-size:var(--t-d)}.work__head span{font-size:var(--t-s);opacity:.75}
+  .plist{list-style:none}
+  .prow{display:grid;grid-template-columns:3.5rem 1fr auto auto;gap:var(--s3);align-items:center;padding:1.6rem 0;box-shadow:inset 0 1px 0 color-mix(in srgb,currentColor 28%,transparent)}
+  .plist li:last-child .prow{box-shadow:inset 0 1px 0 color-mix(in srgb,currentColor 28%,transparent),inset 0 -1px 0 color-mix(in srgb,currentColor 28%,transparent)}
+  .ptitle{font-size:clamp(1.9rem,6vw,5.5rem);line-height:1.02}
+  .pnum,.ptags,.pyear{font-size:var(--t-s);opacity:.75}
+  @media(max-width:720px){.prow{grid-template-columns:2.5rem 1fr}.ptags,.pyear{display:none}}
+  .peek{position:fixed;left:0;top:0;width:clamp(200px,22vw,320px);aspect-ratio:4/5;border-radius:var(--r);background:var(--pbg,var(--violet));color:var(--pfg,#fff);z-index:60;pointer-events:none;padding:1.1rem;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+  .peek__tags{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
+  .peek__auva{width:70%;align-self:center}.peek__title{font-size:var(--t-m);line-height:.95}
+
+  /* Method (horizontal) */
+  .proc{background:var(--violet);overflow:hidden}
+  .proc__pin{height:100svh;display:flex;flex-direction:column;justify-content:center;gap:var(--s3);padding-top:5rem}
+  .proc__head{padding:0 var(--pad)}.proc__head h2{font-size:var(--t-d)}.proc__head p{margin-top:var(--s1);opacity:.9}
+  .track{display:flex;gap:var(--gap);padding:0 var(--pad);width:max-content;will-change:transform}
+  .panel{width:min(78vw,520px);min-height:46vh;border-radius:var(--r);padding:var(--s4);display:flex;flex-direction:column;justify-content:space-between;flex:none}
+  .panel:nth-child(1),.panel:nth-child(4){background:var(--soft);color:var(--ink)}
+  .panel:nth-child(2){background:var(--ink);color:#fff}
+  .panel:nth-child(3){background:var(--pink);color:var(--ink)}
+  .panel b{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(5rem,13vw,10rem);line-height:.8;-webkit-text-stroke:2px currentColor;color:transparent}
+  .panel h3{font-size:var(--t-l);margin-bottom:var(--s1)}
+  .panel .when{display:inline-block;margin-top:var(--s2);font-size:var(--t-s);font-weight:500;padding:.3rem .8rem;border-radius:99px;box-shadow:inset 0 0 0 2px currentColor}
+  .prog{position:relative;height:6px;margin:var(--s2) var(--pad) 0;background:rgba(255,255,255,.25);border-radius:9px}
+  .prog i{position:absolute;inset:0;background:var(--lime);border-radius:9px;transform:scaleX(0);transform-origin:left}
+  .prog__dot{position:absolute;left:0;top:50%;width:22px;height:22px;margin-top:-11px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 4px var(--violet)}
+
+  /* Pricing teaser + tiers */
+  .ptz h2{font-size:var(--t-d);margin:var(--s1) 0 var(--s2)}.ptz .lead{margin-bottom:var(--s6)}
+  .tier{border-radius:var(--r);padding:var(--s4);box-shadow:inset 0 0 0 2px var(--ink);display:flex;flex-direction:column;gap:var(--s2)}
+  .tier--mid{background:var(--ink);color:#fff;box-shadow:none}
+  .tier--mid .btn{background:var(--lime);color:var(--ink)}
+  .tier__price{font-size:var(--t-2xl)}
+  .tier ul{list-style:none;display:grid;gap:.4rem}.tier li::before{content:"✓ ";font-weight:500}
+  .tier dl{display:grid;gap:.4rem;font-size:var(--t-s)}.tier dl div{display:flex;justify-content:space-between;gap:var(--s2);box-shadow:inset 0 1px 0 color-mix(in srgb,currentColor 25%,transparent);padding-top:.4rem}
+  .tier .btn{margin-top:auto;justify-content:center}
+  .more{display:inline-block;margin-top:var(--s4);font-weight:500;box-shadow:inset 0 -2px 0 currentColor}
+
+  /* Voices */
+  .voices h2{font-size:var(--t-d);margin-bottom:var(--s6)}
+  .quote{background:var(--soft);color:var(--ink);border-radius:var(--r);padding:var(--s4);min-height:260px;display:flex;flex-direction:column;justify-content:space-between;--focus:var(--violet)}
+  .quote p{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;letter-spacing:-.03em;font-size:var(--t-m);line-height:1.15}
+  .quote cite{font-style:normal;font-size:var(--t-s);opacity:.75}
+
+  /* FAQ */
+  .faq h2{font-size:var(--t-d);margin-bottom:var(--s4)}.faq h2 em{font-style:normal;color:var(--violet)}
+  details{border-top:2px solid var(--ink);padding:1.4rem 0}details:last-of-type{border-bottom:2px solid var(--ink)}
+  summary{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:var(--t-l);letter-spacing:-.02em;list-style:none;display:flex;justify-content:space-between;gap:var(--s2)}
+  summary::-webkit-details-marker{display:none}summary::after{content:"+";transition:rotate .3s var(--ease-out)}details[open] summary::after{rotate:45deg}
+  details p{margin-top:var(--s2)}
+
+  /* CTA + footer */
+  .cta{background:var(--ink);color:#fff;min-height:100svh;padding:var(--sec-l) var(--pad) var(--s4);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between}
+  .cta h2{font-size:var(--t-hero);position:relative;z-index:2;pointer-events:none}.cta h2 em{font-style:normal;color:var(--lime)}
+  .cta__row{display:flex;gap:var(--s4);align-items:center;flex-wrap:wrap;margin-top:var(--s4);position:relative;z-index:4}
+  .cta__auva{position:absolute;right:var(--pad);bottom:5rem;width:clamp(120px,20vw,280px);z-index:3;animation:bob 5s ease-in-out infinite}
+  .sticker{position:absolute;width:clamp(56px,7vw,92px);aspect-ratio:1;border-radius:24%;display:grid;place-items:center;background:var(--bg);box-shadow:0 8px 0 rgba(255,255,255,.14);z-index:3;touch-action:none}
+  .sticker svg{width:48%;height:48%;fill:var(--ic)}
+  .foot{background:var(--ink);color:#fff;padding:var(--s4) var(--pad) var(--s6);display:flex;justify-content:space-between;gap:var(--s3);flex-wrap:wrap;font-size:var(--t-s);box-shadow:inset 0 1px 0 rgba(255,255,255,.15)}
+  .foot nav,.foot div{display:flex;gap:var(--s3);flex-wrap:wrap}.foot a:hover{color:var(--lime)}
+
+  /* Case view */
+  .case__hero{min-height:100svh;background:var(--cbg);color:var(--cfg);padding:8rem var(--pad) var(--s6);display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
+  .case__auva{position:absolute;right:var(--pad);top:7rem;width:clamp(160px,28vw,400px);animation:bob 5s ease-in-out infinite}
+  .back{position:absolute;top:6rem;left:var(--pad);font-size:var(--t-s);font-weight:500}
+  .case__tags{font-size:var(--t-s);letter-spacing:.12em;text-transform:uppercase;margin-bottom:var(--s2)}
+  .case__title{font-size:clamp(3rem,12vw,12rem);overflow:hidden;padding-bottom:.12em}
+  .case__body{padding:var(--sec-m) var(--pad)}
+  .case__lead{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;letter-spacing:-.03em;line-height:1.05;font-size:clamp(1.6rem,3.4vw,3rem);max-width:30ch;margin-bottom:var(--s6)}
+  .meta{margin-bottom:var(--s6);padding-top:var(--s3);box-shadow:inset 0 2px 0 var(--ink)}
+  .meta span,.res span{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;opacity:.65;display:block}
+  .meta p{font-weight:500}
+  .cols{margin-bottom:var(--s6)}.cols h2{font-size:var(--t-l);margin-bottom:var(--s1)}
+  .res b{display:block;font-size:var(--t-2xl);color:var(--violet)}.res{margin-bottom:var(--s6)}
+  .qt{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;letter-spacing:-.03em;font-size:var(--t-xl);line-height:1.05;margin-bottom:var(--s6);max-width:22ch}
+  .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--gap)}
+  .shot{aspect-ratio:4/5;border-radius:var(--r);display:grid;place-items:center;text-align:center;padding:var(--s3);font-size:var(--t-s);background:var(--violet);color:#fff}
+  .next{display:block;background:var(--ink);color:#fff;padding:var(--sec-m) var(--pad)}
+  .next span{font-size:var(--t-s);letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+  .next strong{display:block;font-size:var(--t-d);color:var(--lime);margin-top:var(--s2);transition:transform .5s var(--ease-out)}
+  .next:hover strong{transform:translateX(1.5rem)}
+
+  /* Pricing view (calm: no mascot, no sparks) */
+  .pv{padding:8rem var(--pad) var(--sec-m);min-height:100svh}
+  .pv h1{font-size:var(--t-hero);margin:var(--s1) 0 var(--s3)}
+  .pv .lead{margin-bottom:var(--s6);font-size:var(--t-m)}
+  .tabs{display:flex;gap:var(--s1);margin-bottom:var(--s6);flex-wrap:wrap}
+  .note{margin-top:var(--s6)}
+
+  /* Reduced motion */
+  .rm .chip,.rm .story__a{display:none}.rm .story__b{opacity:1}
+  .rm .stage{height:70svh}.rm .proc__pin{height:auto;padding-bottom:var(--s6)}
+  .rm .track{width:auto;overflow-x:auto}.rm .prog{display:none}.rm .lever b{color:var(--lime)}
+  @media(prefers-reduced-motion:reduce){.dot,.hero__auva,.chip__in,.cta__auva,.case__auva,.auva .zzz text{animation:none}}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs><radialGradient id="ag" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#9a74ff"/><stop offset="1" stop-color="#4510d6"/></radialGradient></defs>
+  <symbol id="i-cursor" viewBox="0 0 24 24"><path d="M5 3l14 7-6 2-2 6z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V10h4v10zM10 20V4h4v16zM16 20v-7h4v7z"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 4h16v12H9l-5 4z"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 4h18v16H3zm3 12h12l-4-5-3 4-2-2z"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 2l2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5z"/></symbol>
+</svg>
+
+<div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
+<div class="sparks" aria-hidden="true"></div>
+<div class="pbar" aria-hidden="true"></div>
+
+<div class="peek" aria-hidden="true">
+  <span class="peek__tags"></span>
+  <div class="peek__auva" data-auva="wow"></div>
+  <b class="peek__title h"></b>
+</div>
+
+<div class="wipe" aria-hidden="true">
+  <div class="wl wl--a"></div><div class="wl wl--b"></div><div class="wl wl--c"></div>
+  <div class="wipe__mid"><div class="wipe__auva" data-auva="wow"></div><p class="wipe__label h"></p></div>
+</div>
+
+<div class="pre" role="status" aria-label="Loading">
+  <div class="pre__auva" data-auva="sleep"></div>
+  <p class="pre__hi h">Hi. I'm Auva.</p>
+  <div class="pre__count h">0</div>
+  <span class="pre__label">Auverta Studio</span>
+</div>
+
+<header class="nav">
+  <a href="#/" class="logo" aria-label="Auverta home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h5l9 12V3h4v18h-5L7 9v12H3z"/></svg>AUVERTA</a>
+  <ul class="nav__links">
+    <li><a href="#work" data-scramble>Work</a></li>
+    <li><a href="#method" data-scramble>Method</a></li>
+    <li><a href="#/pricing" data-scramble>Pricing</a></li>
+    <li><a href="#faq" data-scramble>FAQ</a></li>
+  </ul>
+  <a class="btn" href="#contact">Start a project</a>
+</header>
+
+<main id="main">
+
+<!-- ================= HOME ================= -->
+<div id="view-home">
+
+  <section class="hero on-violet" id="top">
+    <div class="hero__auva" data-auva="happy" data-talk data-cursor="Poke"></div>
+    <div class="tag"><span class="dot"></span>Beyond Ordinary · Available for projects</div>
+    <h1 class="h hero__title" aria-label="One Studio. Zero Juggling.">
+      <span class="ln"><span class="in" data-split>One Studio.</span></span>
+      <span class="ln"><span class="in" data-split>Zero Juggling.</span></span>
+    </h1>
+    <p class="hero__sub">Auverta is a full-service digital agency. Brand, web, AI content, and marketing, all under one roof.</p>
+    <div class="hero__row">
+      <a class="btn" href="#contact">Start a project →</a>
+      <div class="picker" role="group" aria-label="Choose your size">
+        <span>I'm a…</span>
+        <button class="pill pick" data-key="startup" aria-pressed="false">Startup</button>
+        <button class="pill pick" data-key="small" aria-pressed="false">Small business</button>
+        <button class="pill pick" data-key="brand" aria-pressed="false">Established brand</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="marq h" aria-hidden="true"><div class="marq__track">
+    <span class="marq__item">Web Design</span><span class="marq__item">AI Content</span><span class="marq__item">Branding</span><span class="marq__item">Digital Marketing</span><span class="marq__item">Video</span>
+    <span class="marq__item">Web Design</span><span class="marq__item">AI Content</span><span class="marq__item">Branding</span><span class="marq__item">Digital Marketing</span><span class="marq__item">Video</span>
+  </div></div>
+
+  <section class="story" id="story" aria-label="Our story">
+    <div class="stage">
+      <div class="story__copy">
+        <p class="story__a h">Freelancers.<br>Tools.<br>Deadlines.<br>Sound familiar?</p>
+        <p class="story__b h">Everything.<br>Under one roof.</p>
+      </div>
+      <div class="chip" style="left:7%;top:34%"><div class="chip__in" style="--r:-10deg"><svg><use href="#i-cursor"/></svg></div></div>
+      <div class="chip" style="left:20%;top:62%"><div class="chip__in" style="--bg:var(--pink);--ic:var(--ink);--r:8deg;--d:-1s"><svg><use href="#i-play"/></svg></div></div>
+      <div class="chip" style="left:33%;top:44%"><div class="chip__in" style="--bg:var(--lime);--ic:var(--ink);--r:-6deg;--d:-2s"><svg><use href="#i-chart"/></svg></div></div>
+      <div class="chip" style="left:68%;top:40%"><div class="chip__in" style="--r:12deg;--d:-.5s"><svg><use href="#i-chat"/></svg></div></div>
+      <div class="chip" style="left:82%;top:64%"><div class="chip__in" style="--bg:var(--ink);--ic:#fff;--r:-9deg;--d:-1.5s"><svg><use href="#i-image"/></svg></div></div>
+      <div class="chip" style="left:90%;top:32%"><div class="chip__in" style="--bg:var(--pink);--ic:var(--ink);--r:7deg;--d:-2.5s"><svg><use href="#i-spark"/></svg></div></div>
+      <div class="chip" style="left:56%;top:62%"><div class="chip__in" style="--bg:var(--soft);--ic:var(--violet);--r:-12deg;--d:-3s"><svg><use href="#i-cursor"/></svg></div></div>
+      <div class="story__auva" data-auva="happy" data-talk data-cursor="Poke"></div>
+    </div>
+  </section>
+
+  <!-- PLACEHOLDER: proof -->
+  <section class="proof sec sec--s on-soft" id="proof">
+    <p class="eyebrow">Trusted by</p>
+    <h2 class="h">Proof goes here.</h2>
+    <div class="logos">
+      <div class="logo-ph ph ph--q">Client logo</div><div class="logo-ph ph ph--q">Client logo</div><div class="logo-ph ph ph--q">Client logo</div>
+      <div class="logo-ph ph ph--q">Client logo</div><div class="logo-ph ph ph--q">Client logo</div><div class="logo-ph ph ph--q">Client logo</div>
+    </div>
+    <div class="g">
+      <div class="stat ph" style="--c:4;--cm:4"><b class="h">00+</b><span>Projects delivered</span></div>
+      <div class="stat ph" style="--c:4;--cm:4"><b class="h">00+</b><span>Brands scaled</span></div>
+      <div class="stat ph" style="--c:4;--cm:4"><b class="h">00%</b><span>Result metric</span></div>
+    </div>
+  </section>
+
+  <section class="paths sec on-violet" id="paths">
+    <p class="eyebrow">Start here</p>
+    <h2 class="h">Whatever your size, we've got a roof for you.</h2>
+    <div class="paths__grid g skewme">
+      <article class="path" data-key="startup" style="--c:4;--cm:4">
+        <div><p class="eyebrow">01 · Startups &amp; founders</p>
+          <h3 class="h">Your idea is ready. Your brand and site aren't.</h3>
+          <p>Launch-ready brand, website, and content in one sprint. <em>(draft copy)</em></p></div>
+        <a class="btn" href="#/pricing">Start here →</a>
+      </article>
+      <article class="path" data-key="small" style="--c:4;--cm:4">
+        <div><p class="eyebrow">02 · Small businesses</p>
+          <h3 class="h">Customers can't choose you if they can't find you.</h3>
+          <p>A professional site, search visibility, and content that works while you run the business. <em>(draft copy)</em></p></div>
+        <a class="btn" href="#/pricing">Start here →</a>
+      </article>
+      <article class="path" data-key="brand" style="--c:4;--cm:4">
+        <div><p class="eyebrow">03 · Established brands</p>
+          <h3 class="h">Your brand is everywhere. Does it look like one brand?</h3>
+          <p>Creative systems and content at volume, consistent across every channel. <em>(draft copy)</em></p></div>
+        <a class="btn" href="#/pricing">Start here →</a>
+      </article>
+    </div>
+    <div class="levers">
+      <p class="levers__head h">Scale means three things. We move all three.</p>
+      <div class="lever"><b class="h">Reach</b><p>More people see you.</p></div>
+      <div class="lever"><b class="h">Output</b><p>More content, faster, with AI and humans together.</p></div>
+      <div class="lever"><b class="h">Consistency</b><p>All of it looks like one brand.</p></div>
+    </div>
+  </section>
+
+  <section class="divs sec on-ink" id="divisions">
+    <p class="eyebrow">Two divisions. One roof.</p>
+    <h2 class="h">Two divisions that work hand in hand.</h2>
+    <p class="divs__sub">Strategy and craft on one side, AI-powered content and growth on the other, sharing one team and one method.</p>
+    <div class="g skewme">
+      <article class="div" style="--c:6;--cm:4">
+        <h3 class="h">Brand &amp; Web</h3><p>Identity, websites, and visuals that look like one brand everywhere.</p>
+        <ul><li>Web design &amp; development</li><li>Branding &amp; identity</li><li>Graphic design</li></ul>
+      </article>
+      <article class="div" style="--c:6;--cm:4">
+        <h3 class="h">AI Content &amp; Growth</h3><p>Generative visuals, video, and marketing that keep your channels full.</p>
+        <ul><li>AI images &amp; video</li><li>Video editing &amp; social content</li><li>SEO, paid media &amp; conversion</li></ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="idea sec on-soft" id="idea">
+    <p class="eyebrow">Consistency, shown</p>
+    <h2 class="h">One idea. Every format.</h2>
+    <div class="idea__chips" role="group" aria-label="Pick an audience">
+      <span class="eyebrow">See it for a…</span>
+      <button class="pill idea-chip" data-key="startup" aria-pressed="true">Startup</button>
+      <button class="pill idea-chip" data-key="small" aria-pressed="false">Small business</button>
+      <button class="pill idea-chip" data-key="brand" aria-pressed="false">Established brand</button>
+    </div>
+    <div class="mocks g">
+      <figure class="mock mock--web" style="--c:7;--cm:4">
+        <div class="mw__top"><i></i><i></i><i></i><span>yourbrand.com</span></div>
+        <div class="mw__body"><p class="eyebrow">Your brand</p><h3 class="h" data-idea-h>Launch like you mean it.</h3><p data-idea-s>Brand, site, and content. One sprint.</p><span class="mw__btn">Start a project</span><div class="mw__auva" data-auva="happy"></div></div>
+        <figcaption>Website</figcaption>
+      </figure>
+      <figure class="mock mock--post" style="--c:5;--cm:4">
+        <h3 class="h" data-idea-h>Launch like you mean it.</h3><div class="pa" data-auva="wink"></div>
+        <figcaption>Social post</figcaption>
+      </figure>
+      <figure class="mock mock--video" style="--c:3;--cm:4">
+        <div class="play"><svg><use href="#i-play"/></svg></div><h3 class="h" data-idea-h>Launch like you mean it.</h3>
+        <figcaption>Short video</figcaption>
+      </figure>
+      <figure class="mock mock--banner" style="--c:9;--cm:4">
+        <h3 class="h" data-idea-h>Launch like you mean it.</h3><div class="pa" data-auva="cool"></div>
+        <figcaption>Banner ad</figcaption>
+      </figure>
+    </div>
+    <p style="margin-top:var(--s3);font-size:var(--t-s);opacity:.75">Same idea, same type, same palette, same character. That's what consistency looks like.</p>
+  </section>
+
+  <section class="work sec" id="work">
+    <div class="work__head"><h2 class="h">Selected work</h2><span>( placeholder projects from the feed · hover, then click )</span></div>
+    <ul class="plist"></ul>
+  </section>
+
+  <section class="proc" id="method" aria-label="The One-Roof Method">
+    <div class="proc__pin">
+      <div class="proc__head"><p class="eyebrow">How we work</p><h2 class="h">The One-Roof Method</h2><p>Four steps. One team. Nothing falls between the cracks.</p></div>
+      <div class="track">
+        <div class="panel"><b>01</b><div><h3 class="h">Onboarding &amp; audit</h3><p>A deep-dive on your goals, audience, and scope, with a quick digital audit.</p><span class="when">Blueprint + quote in 24–48 hrs</span></div></div>
+        <div class="panel"><b>02</b><div><h3 class="h">Strategy &amp; blueprint</h3><p>The roadmap: wireframes, visual direction, AI workflows, and campaign plan.</p><span class="when ph ph--q">[timeline]</span></div></div>
+        <div class="panel"><b>03</b><div><h3 class="h">Production &amp; launch</h3><p>We design, build, and produce the visuals, web platform, and ad creatives, then launch.</p><span class="when">Assets 3–5 days · Web 2–4 weeks</span></div></div>
+        <div class="panel"><b>04</b><div><h3 class="h">Delivery &amp; scaling</h3><p>After handoff we study real performance data and keep refining for growth.</p><span class="when ph ph--q">[timeline]</span></div></div>
+      </div>
+      <div class="prog" aria-hidden="true"><i></i><div class="prog__dot"></div></div>
+    </div>
+  </section>
+
+  <section class="ptz sec on-soft" id="pricing-teaser">
+    <p class="eyebrow">Pricing</p>
+    <h2 class="h">Pricing that explains itself.</h2>
+    <p class="lead">Three tiers per service. Clear scope, clear timelines. <em>(placeholder prices)</em></p>
+    <div class="g">
+      <article class="tier" style="--c:4;--cm:4"><p class="eyebrow">Launch</p><p class="tier__price h ph ph--q">From $—</p><p>For getting live fast. <em>(draft)</em></p><a class="btn" href="#/pricing">See details</a></article>
+      <article class="tier tier--mid" style="--c:4;--cm:4"><p class="eyebrow">Grow</p><p class="tier__price h ph ph--q">From $—</p><p>For building momentum. <em>(draft)</em></p><a class="btn" href="#/pricing">See details</a></article>
+      <article class="tier" style="--c:4;--cm:4"><p class="eyebrow">Scale</p><p class="tier__price h ph ph--q">From $—</p><p>For going bigger, everywhere. <em>(draft)</em></p><a class="btn" href="#/pricing">See details</a></article>
+    </div>
+    <a class="more" href="#/pricing">See full pricing →</a>
+  </section>
+
+  <!-- PLACEHOLDER: testimonials -->
+  <section class="voices sec on-violet" id="voices">
+    <p class="eyebrow">Client voices</p>
+    <h2 class="h">What clients say.</h2>
+    <div class="g skewme">
+      <figure class="quote ph" style="--c:4;--cm:4"><p>“Quote goes here.”</p><cite>Name · Role, Company</cite></figure>
+      <figure class="quote ph" style="--c:4;--cm:4"><p>“Quote goes here.”</p><cite>Name · Role, Company</cite></figure>
+      <figure class="quote ph" style="--c:4;--cm:4"><p>“Quote goes here.”</p><cite>Name · Role, Company</cite></figure>
+    </div>
+  </section>
+
+  <section class="faq sec on-soft" id="faq">
+    <h2 class="h">Quick questions<br>for <em>founders</em></h2>
+    <details><summary>What core services does Auverta offer?</summary><p>Full-service digital solutions: custom web development and UI/UX design, AI content generation (photorealistic visuals and video), graphic design, video editing, social media management, and data-driven digital marketing.</p></details>
+    <details><summary>How does Auverta use AI in content production?</summary><p>We combine generative AI workflows with human creative direction to produce studio-quality images, product renders, and video ad variations faster and at a much lower cost than traditional shoots.</p></details>
+    <details><summary>What is the typical timeline for delivery?</summary><p>Creative assets, video edits, and social media batches take 3–5 business days. Custom web design and complete brand projects take 2–4 weeks.</p></details>
+    <details><summary>Do you offer custom pricing and packages?</summary><p>Yes. We build custom retainers and project proposals around your goals, deliverables, and growth targets.</p></details>
+    <details><summary>How do we track progress and performance?</summary><p>You get a direct line to our team, regular review calls, and transparent reporting dashboards for campaign ROI and asset status.</p></details>
+    <details><summary>How do we get started?</summary><p>Get in touch or book a strategy call. We'll discuss your goals, run a quick digital audit, and send a custom project blueprint and quote within 24–48 hours.</p></details>
+  </section>
+
+  <section class="cta" id="contact">
+    <div class="sticker" style="left:8%;top:12%;--bg:var(--lime);--ic:var(--violet)" data-cursor="Drag"><svg><use href="#i-cursor"/></svg></div>
+    <div class="sticker" style="left:72%;top:10%;--bg:var(--pink);--ic:var(--ink)" data-cursor="Drag"><svg><use href="#i-play"/></svg></div>
+    <div class="sticker" style="left:44%;top:6%;--bg:var(--violet);--ic:var(--lime)" data-cursor="Drag"><svg><use href="#i-chart"/></svg></div>
+    <div class="sticker" style="left:86%;top:40%;--bg:#fff;--ic:var(--violet)" data-cursor="Drag"><svg><use href="#i-chat"/></svg></div>
+    <div class="sticker" style="left:5%;top:46%;--bg:var(--violet);--ic:#fff" data-cursor="Drag"><svg><use href="#i-image"/></svg></div>
+    <div class="sticker" style="left:60%;top:30%;--bg:var(--soft);--ic:var(--ink)" data-cursor="Drag"><svg><use href="#i-spark"/></svg></div>
+    <div class="cta__auva" data-auva="cool" data-talk data-cursor="Poke"></div>
+    <h2 class="h">Let's go<br><em>beyond</em><br>ordinary.</h2>
+    <div class="cta__row">
+      <a class="btn" href="mailto:hello@auverta.studio">Start a project →</a>
+      <a href="mailto:hello@auverta.studio">hello@auverta.studio</a>
+    </div>
+  </section>
+
+</div>
+
+<!-- ================= CASE (built by JS) ================= -->
+<div id="view-case" hidden></div>
+
+<!-- ================= PRICING (calm) ================= -->
+<div id="view-pricing" class="on-soft" hidden>
+  <section class="pv">
+    <p class="eyebrow">Pricing</p>
+    <h1 class="h">Clear scope.<br>Clear timelines.</h1>
+    <p class="lead ph">[Placeholder intro: how pricing works, what's always included, how custom quotes work.]</p>
+    <div class="tabs" role="group" aria-label="Choose a division">
+      <button class="pill tab" data-tab="web" aria-pressed="true">Brand &amp; Web</button>
+      <button class="pill tab" data-tab="ai" aria-pressed="false">AI Content &amp; Growth</button>
+    </div>
+    <div class="g" data-panel="web"></div>
+    <div class="g" data-panel="ai" hidden></div>
+    <p class="note ph">[Placeholder: custom quotes, payment terms, what happens after you request a tier.]</p>
+  </section>
+</div>
+
+</main>
+
+<footer class="foot">
+  <span>© 2026 Auverta Studio</span>
+  <nav aria-label="Footer"><a href="#work">Work</a><a href="#method">Method</a><a href="#/pricing">Pricing</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></nav>
+  <div><a href="https://www.instagram.com/auverta.studio">Instagram</a><a href="https://www.linkedin.com/company/auverta/">LinkedIn</a><a href="https://www.facebook.com/share/1CKadD9TnT/">Facebook</a></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Draggable.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  gsap.registerPlugin(ScrollTrigger, Draggable);
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (reduce) document.documentElement.classList.add('rm');
+
+  // Motion rules: two easings + one reserved for Auva
+  const OUT = 'expo.out', IO = 'expo.inOut', AUVA_EASE = 'elastic.out(1,.55)';
+
+  /* ============ DATA (all placeholders except where noted) ============ */
+  const projects = [
+    { slug:'nano-banana', title:'Nano Banana 2.1 vs Pro', tags:'AI content · Carousel', year:'2026', bg:'#ff3fa4', fg:'#0b0b12', mood:'wow',
+      blurb:'A swipe-through carousel that turned an AI model comparison into a boxing match, with Auva in the ring. (draft)' },
+    { slug:'meet-auva', title:'Meet Auva', tags:'Branding · Mascot', year:'2026', bg:'#5a1cff', fg:'#c8ff00', mood:'happy',
+      blurb:'Introducing the face of Auverta: our brand\'s new favorite teammate. (draft)' },
+    { slug:'zero-juggling', title:'One Studio. Zero Juggling.', tags:'Campaign · Social', year:'2026', bg:'#c8ff00', fg:'#0b0b12', mood:'cool',
+      blurb:'A campaign line and visual system built around one promise: everything under one roof. (draft)' },
+    { slug:'execution', title:"Ideas Don't Go Viral", tags:'Social · Typography', year:'2026', bg:'#0b0b12', fg:'#c8ff00', mood:'wink',
+      blurb:'A bold typographic post: ideas are cheap, execution is what lands. (draft)' },
+    { slug:'founders', title:'Quick Question for Founders', tags:'Series · Social', year:'2026', bg:'#d9ccff', fg:'#0b0b12', mood:'wow',
+      blurb:'A recurring series that answers the questions founders actually ask. (draft)' }
+  ];
+  const IDEAS = {
+    startup:{ h:'Launch like you mean it.', s:'Brand, site, and content. One sprint.' },
+    small:{ h:'Get found. Look the part.', s:'A professional site and content that works for you.' },
+    brand:{ h:'One look. Every channel.', s:'Consistent creative, at the volume you need.' }
+  };
+
+  /* ============ AUVA ============ */
+  const AUVA = (mood = 'happy') => `
+  <svg class="auva" data-mood="${mood}" viewBox="0 0 200 200" role="img" aria-label="Auva, the Auverta mascot">
+    <path d="M28 120C28 62 62 28 100 28s72 34 72 92c0 20 6 36 14 48-16-2-24 8-38 12-12-8-24-8-36 0-12-8-24-8-36 0-14-4-22-14-38-12 8-12 14-28 14-48z" fill="url(#ag)"/>
+    <ellipse cx="72" cy="62" rx="22" ry="12" fill="#fff" opacity=".28" transform="rotate(-20 72 62)"/>
+    <g class="eL"><ellipse cx="78" cy="108" rx="10" ry="14" fill="#fff"/><ellipse class="pupil" cx="78" cy="110" rx="5" ry="8" fill="#1a0a4a"/></g>
+    <g class="eR"><ellipse cx="124" cy="108" rx="10" ry="14" fill="#fff"/><ellipse class="pupil" cx="124" cy="110" rx="5" ry="8" fill="#1a0a4a"/></g>
+    <path class="sL" d="M66 108q12 10 24 0" stroke="#1a0a4a" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path class="sR" d="M112 108q12 10 24 0" stroke="#1a0a4a" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path class="ms" d="M88 136q13 14 26 0" stroke="#c8ff00" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <ellipse class="mw" cx="101" cy="141" rx="8" ry="11" fill="#1a0a4a"/>
+    <path class="mf" d="M92 140h18" stroke="#c8ff00" stroke-width="5" stroke-linecap="round"/>
+    <g class="gl" fill="rgba(10,0,40,.55)" stroke="#c8ff00" stroke-width="5"><rect x="54" y="92" width="48" height="32" rx="14"/><rect x="104" y="92" width="48" height="32" rx="14"/><path d="M102 106h2" fill="none"/></g>
+    <g class="zzz"><text x="150" y="60" font-size="22">z</text><text x="164" y="42" font-size="28">Z</text></g>
+  </svg>`;
+  const fillAuva = (root = document) => $$('[data-auva]', root).forEach(el => { if (!el.firstElementChild) el.innerHTML = AUVA(el.dataset.auva); });
+  const setMood = (root, m) => $$('.auva', root).forEach(s => s.dataset.mood = m);
+  fillAuva();
+
+  const split = el => {
+    if (el.dataset.done) return; el.dataset.done = 1;
+    el.innerHTML = [...el.textContent].map(c => c === ' ' ? ' ' : `<span class="ch">${c}</span>`).join('');
+  };
+  $$('[data-split]').forEach(split);
+
+  (function blink() {
+    gsap.to('.eL,.eR', { scaleY: .1, duration: .08, yoyo: true, repeat: 1 });
+    gsap.delayedCall(gsap.utils.random(2.5, 5), blink);
+  })();
+  let eyeRaf = 0, mx = 0, my = 0;
+  const trackEyes = () => {
+    eyeRaf = 0;
+    $$('.pupil').forEach(p => {
+      const r = p.ownerSVGElement.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > innerHeight || !r.width) return;
+      const a = Math.atan2(my - (r.top + r.height / 2), mx - (r.left + r.width / 2));
+      gsap.to(p, { x: Math.cos(a) * 4, y: Math.sin(a) * 5, duration: .3, overwrite: true });
+    });
+  };
+
+  /* ============ SMOOTH SCROLL ============ */
+  let lenis;
+  if (reduce) {
+    lenis = { start(){}, stop(){}, scrollTo(t){ t === 0 ? scrollTo(0, 0) : $(t)?.scrollIntoView(); } };
+  } else {
+    lenis = new Lenis({ lerp: .09 });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(t => lenis.raf(t * 1000));
+    gsap.ticker.lagSmoothing(0);
+    lenis.stop();
+  }
+  ScrollTrigger.create({ start: 0, end: 'max', onUpdate: s => $('.pbar').style.transform = `scaleX(${s.progress})` });
+
+  /* ============ STATE ============ */
+  let homeCtx = null, caseCtx = null, pricingCtx = null, current = 'home', busy = false, path = null;
+  const ctxOf = v => v === 'home' ? homeCtx : v === 'case' ? caseCtx : pricingCtx;
+
+  /* ============ CURSOR / SPARKS / PEEK ============ */
+  const peek = $('.peek');
+  gsap.set(peek, { xPercent: -50, yPercent: -50, scale: 0, opacity: 0 });
+  if (fine) {
+    const cur = $('.cursor'), lab = $('.cursor__label');
+    gsap.set(cur, { xPercent: -50, yPercent: -50 });
+    const cx = gsap.quickTo(cur, 'x', { duration: .2, ease: 'power3' }), cy = gsap.quickTo(cur, 'y', { duration: .2, ease: 'power3' });
+    const px = gsap.quickTo(peek, 'x', { duration: .5, ease: 'power3' }), py = gsap.quickTo(peek, 'y', { duration: .5, ease: 'power3' });
+    const pr = gsap.quickTo(peek, 'rotation', { duration: .5, ease: 'power3' });
+    const sparks = $('.sparks');
+    for (let i = 0; i < 14; i++) sparks.insertAdjacentHTML('beforeend', '<svg class="spark" viewBox="0 0 24 24"><use href="#i-spark"/></svg>');
+    const sp = $$('.spark'); let si = 0, lx = 0, ly = 0, plx = 0, rt;
+    addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cur.style.opacity = 1; cx(mx); cy(my); px(mx); py(my);
+      pr(gsap.utils.clamp(-14, 14, (mx - plx) * .6)); plx = mx;
+      clearTimeout(rt); rt = setTimeout(() => pr(0), 120);
+      if (!eyeRaf) eyeRaf = requestAnimationFrame(trackEyes);
+      // Calm zones: no sparks on pricing, forms, or work rows
+      if (current !== 'pricing' && Math.hypot(mx - lx, my - ly) > 46 && !e.target.closest('.prow')) {
+        lx = mx; ly = my;
+        const s = sp[si++ % sp.length];
+        gsap.fromTo(s, { x: lx, y: ly, scale: 0, rotation: 0, opacity: 1 },
+          { scale: gsap.utils.random(.6, 1.2), rotation: gsap.utils.random(-120, 120), y: ly + gsap.utils.random(20, 60), opacity: 0, duration: .9, ease: 'power2.out', overwrite: true });
+      }
+    });
+    document.addEventListener('mouseover', e => {
+      const t = e.target.closest('[data-cursor]'), a = e.target.closest('a,button,summary');
+      if (t) { lab.textContent = t.dataset.cursor; cur.classList.add('is-label'); gsap.to(cur, { width: 92, height: 92, duration: .35, ease: OUT }); }
+      else { cur.classList.remove('is-label'); gsap.to(cur, { width: a ? 36 : 14, height: a ? 36 : 14, duration: .3 }); }
+    });
+  } else {
+    addEventListener('touchstart', e => { mx = e.touches[0].clientX; my = e.touches[0].clientY; if (!eyeRaf) eyeRaf = requestAnimationFrame(trackEyes); }, { passive: true });
+  }
+
+  // Nav scramble
+  const GL = '!<>-_/[]{}—=+*^?#';
+  $$('[data-scramble]').forEach(a => {
+    const orig = a.textContent;
+    a.addEventListener('mouseenter', () => {
+      const o = { p: 0 };
+      gsap.to(o, { p: 1, duration: .5, ease: 'none', onUpdate: () => {
+        a.textContent = [...orig].map((c, i) => i < o.p * orig.length ? c : GL[Math.floor(Math.random() * GL.length)]).join('');
+      }, onComplete: () => a.textContent = orig });
+    });
+  });
+
+  // Auva talks
+  const lines = ['One studio. Zero juggling!', 'Beyond ordinary!', 'Psst... hire us.', 'I do not blink. (I blink.)', 'Everything under one roof!'];
+  document.addEventListener('click', e => {
+    const w = e.target.closest('[data-talk]'); if (!w) return;
+    $$('.bubble', w).forEach(b => b.remove());
+    const b = document.createElement('div'); b.className = 'bubble'; b.textContent = lines[Math.floor(Math.random() * lines.length)];
+    w.appendChild(b); setMood(w, 'wow');
+    gsap.fromTo(b, { scale: 0, opacity: 0, transformOrigin: 'bottom left' }, { scale: 1, opacity: 1, duration: .5, ease: AUVA_EASE });
+    gsap.fromTo($('.auva', w), { y: 0 }, { y: -40, duration: .25, yoyo: true, repeat: 1, ease: 'power2.out' });
+    gsap.to(b, { opacity: 0, delay: 1.8, duration: .3, onComplete: () => { b.remove(); setMood(w, w.dataset.auva); } });
+  });
+
+  /* ============ PATH PICKER + IDEA SWITCHER ============ */
+  function setPath(k) {
+    path = k;
+    $$('.path').forEach(p => p.classList.toggle('is-active', p.dataset.key === k));
+    $$('.pick,.idea-chip').forEach(b => b.setAttribute('aria-pressed', b.dataset.key === k));
+    const d = IDEAS[k], hs = $$('[data-idea-h]'), ss = $$('[data-idea-s]');
+    gsap.to([...hs, ...ss], { opacity: 0, y: 8, duration: .2, onComplete: () => {
+      hs.forEach(e => e.textContent = d.h); ss.forEach(e => e.textContent = d.s);
+      gsap.to([...hs, ...ss], { opacity: 1, y: 0, duration: .5, ease: OUT });
+    }});
+  }
+  $$('.pick').forEach(b => b.addEventListener('click', () => { setPath(b.dataset.key); lenis.scrollTo('#paths', { duration: 1.4 }); }));
+  $$('.idea-chip').forEach(b => b.addEventListener('click', () => setPath(b.dataset.key)));
+  $$('.path').forEach(p => p.addEventListener('mouseenter', () => { if (path !== p.dataset.key) setPath(p.dataset.key); }));
+
+  /* ============ WORK LIST + HOVER ============ */
+  const plist = $('.plist');
+  plist.innerHTML = projects.map((p, i) => `
+    <li><a class="prow" href="#/work/${p.slug}" data-i="${i}">
+      <span class="pnum">0${i + 1}</span><span class="ptitle h" data-split>${p.title}</span>
+      <span class="ptags">${p.tags}</span><span class="pyear">${p.year}</span></a></li>`).join('');
+  $$('.ptitle').forEach(split);
+  const rows = $$('.prow'), work = $('.work');
+  const hidePeek = () => gsap.to(peek, { scale: 0, opacity: 0, duration: .3, ease: 'power2.in' });
+  rows.forEach((row, i) => {
+    const p = projects[i];
+    row.addEventListener('mouseenter', () => {
+      if (!fine) return;
+      peek.style.setProperty('--pbg', p.bg); peek.style.setProperty('--pfg', p.fg);
+      $('.peek__tags', peek).textContent = p.tags; $('.peek__title', peek).textContent = p.title;
+      setMood(peek, p.mood);
+      gsap.to(peek, { scale: 1, opacity: 1, duration: .5, ease: OUT });
+      gsap.to(work, { backgroundColor: p.bg, color: p.fg, duration: .5, overwrite: 'auto' });
+      gsap.to(rows, { opacity: j => j === i ? 1 : .25, duration: .3, overwrite: true });
+      gsap.to($$('.ch', row), { y: '-0.09em', duration: .25, yoyo: true, repeat: 1, stagger: .02, ease: 'power2.out' });
+    });
+  });
+  plist.addEventListener('mouseleave', () => {
+    hidePeek();
+    gsap.to(work, { backgroundColor: '#0b0b12', color: '#ffffff', duration: .5, overwrite: 'auto' });
+    gsap.to(rows, { opacity: 1, duration: .3, overwrite: true });
+  });
+  $$('.hero__title .ch').forEach(c => c.addEventListener('mouseenter', () => {
+    gsap.fromTo(c, { y: 0, rotation: 0 }, { y: '-0.12em', rotation: gsap.utils.random(-12, 12), duration: .25, yoyo: true, repeat: 1, ease: 'power2.out' });
+  }));
+
+  /* ============ PRICING (built once) ============ */
+  const tier = (name, fit, mid) => `
+    <article class="tier ${mid ? 'tier--mid' : ''}" style="--c:4;--cm:4">
+      <p class="eyebrow">${name}${mid ? ' · Most chosen' : ''}</p>
+      <p class="tier__price h ph ph--q">From $—</p>
+      <p>${fit} <em>(draft)</em></p>
+      <ul class="ph"><li>[Scope item]</li><li>[Scope item]</li><li>[Scope item]</li><li>[Scope item]</li></ul>
+      <dl><div><dt>Timeline</dt><dd>[timeline]</dd></div><div><dt>Revisions</dt><dd>[#]</dd></div><div><dt>Not included</dt><dd>[exclusions]</dd></div></dl>
+      <a class="btn" href="mailto:hello@auverta.studio?subject=${encodeURIComponent('Pricing: ' + name)}">Request ${name}</a>
+    </article>`;
+  $$('[data-panel]').forEach(p => p.innerHTML = tier('Launch', 'For getting live fast.') + tier('Grow', 'For building momentum.', true) + tier('Scale', 'For going bigger, everywhere.'));
+  $$('.tab').forEach(t => t.addEventListener('click', () => {
+    $$('.tab').forEach(b => b.setAttribute('aria-pressed', b === t));
+    $$('[data-panel]').forEach(p => p.hidden = p.dataset.panel !== t.dataset.tab);
+    gsap.from($$(`[data-panel="${t.dataset.tab}"] .tier`), { y: 24, opacity: 0, duration: .6, stagger: .08, ease: OUT });
+  }));
+
+  /* ============ WIPE ENGINE ============ */
+  const mk = el => ({ el, p: { tl: 110, tr: 110, bl: 110, br: 110 } });
+  const draw = L => L.el.style.clipPath = `polygon(0 ${L.p.tl}%,100% ${L.p.tr}%,100% ${L.p.br}%,0 ${L.p.bl}%)`;
+  const layers = $$('.wl').map(mk), pre = mk($('.pre'));
+  const coverTL = () => {
+    const t = gsap.timeline();
+    layers.forEach((L, i) => {
+      t.fromTo(L.p, { tl: 110, tr: 110, bl: 110, br: 110 }, { tl: -10, duration: .8, ease: IO, onUpdate: () => draw(L) }, i * .1)
+       .to(L.p, { tr: -10, duration: .8, ease: IO, onUpdate: () => draw(L) }, i * .1 + .12);
+    });
+    return t;
+  };
+  const exitTL = list => {
+    const t = gsap.timeline();
+    list.forEach((L, i) => {
+      t.to(L.p, { bl: -10, duration: .9, ease: IO, onUpdate: () => draw(L) }, i * .1)
+       .to(L.p, { br: -10, duration: .9, ease: IO, onUpdate: () => draw(L) }, i * .1 + .12);
+    });
+    return t;
+  };
+
+  /* ============ VIEWS ============ */
+  const views = { home: $('#view-home'), case: $('#view-case'), pricing: $('#view-pricing') };
+
+  function buildCase(slug) {
+    const i = Math.max(0, projects.findIndex(p => p.slug === slug)), p = projects[i], n = projects[(i + 1) % projects.length];
+    const ph = t => `<p class="ph">[${t}]</p>`;
+    views.case.innerHTML = `
+    <article style="--cbg:${p.bg};--cfg:${p.fg}">
+      <header class="case__hero">
+        <a class="back" href="#/">← Back to all work</a>
+        <div class="case__auva" data-auva="${p.mood}"></div>
+        <p class="case__tags">${p.tags} · ${p.year}</p>
+        <h1 class="h case__title" aria-label="${p.title}"><span data-split>${p.title}</span></h1>
+      </header>
+      <section class="case__body on-soft">
+        <p class="case__lead">${p.blurb}</p>
+        <div class="meta g">
+          <div style="--c:2;--cm:2"><span>Client</span><p class="ph ph--q">[Client]</p></div>
+          <div style="--c:2;--cm:2"><span>Industry</span><p class="ph ph--q">[Industry]</p></div>
+          <div style="--c:2;--cm:2"><span>Size</span><p class="ph ph--q">[Startup / Small / Brand]</p></div>
+          <div style="--c:2;--cm:2"><span>Lever</span><p class="ph ph--q">[Reach / Output / Consistency]</p></div>
+          <div style="--c:2;--cm:2"><span>Timeline</span><p class="ph ph--q">[Timeline]</p></div>
+          <div style="--c:2;--cm:2"><span>Deliverables</span><p class="ph ph--q">[Deliverables]</p></div>
+        </div>
+        <div class="cols g">
+          <div style="--c:4"><h2 class="h">The problem</h2>${ph('What was broken or missing')}</div>
+          <div style="--c:4"><h2 class="h">The approach</h2>${ph('What we did, and the One-Roof steps involved')}</div>
+          <div style="--c:4"><h2 class="h">The result</h2>${ph('What changed')}</div>
+        </div>
+        <div class="res g">
+          <div class="ph" style="--c:4;--cm:4"><b class="h">00%</b><span>Result metric</span></div>
+          <div class="ph" style="--c:4;--cm:4"><b class="h">00x</b><span>Result metric</span></div>
+          <div class="ph" style="--c:4;--cm:4"><b class="h">00</b><span>Result metric</span></div>
+        </div>
+        <blockquote class="qt ph">“[Client quote]”</blockquote>
+        <div class="shots"><div class="shot ph">[Media: post, reel, or site capture]</div><div class="shot ph">[Media: behind the scenes]</div><div class="shot ph">[Media: results]</div></div>
+      </section>
+      <a class="next" href="#/work/${n.slug}" data-cursor="Next"><span>Next project</span><strong class="h">${n.title} →</strong></a>
+    </article>`;
+    fillAuva(views.case); $$('[data-split]', views.case).forEach(split);
+  }
+
+  function initHome() {
+    if (reduce) return;
+    $$('.lever').forEach(l => l.classList.remove('is-on'));
+    const ctx = gsap.context(() => {
+      gsap.set('.hero__title .in', { yPercent: 110 });
+      gsap.set('.hero .tag,.hero__sub,.hero__row', { y: 24, opacity: 0 });
+      gsap.set('.hero__auva', { scale: .6, rotation: -10, opacity: 0 });
+
+      // Marquee: speeds up with scroll, reverses with direction
+      const track = $('.marq__track');
+      const marq = gsap.to(track, { x: () => -track.scrollWidth / 2, duration: 26, ease: 'none', repeat: -1 });
+      ScrollTrigger.create({ onUpdate: s => {
+        const v = 1 + Math.min(Math.abs(s.getVelocity()) / 350, 8);
+        gsap.to(marq, { timeScale: s.direction * v, duration: .25, overwrite: true });
+        gsap.to(marq, { timeScale: s.direction, duration: 1.2, delay: .3 });
+      }});
+
+      // Gentle skew on card grids with scroll velocity
+      const proxy = { s: 0 }, setSkew = gsap.quickSetter('.skewme', 'skewY', 'deg'), clamp = gsap.utils.clamp(-5, 5);
+      ScrollTrigger.create({ onUpdate: self => {
+        const s = clamp(self.getVelocity() / -300);
+        if (Math.abs(s) > Math.abs(proxy.s)) { proxy.s = s; gsap.to(proxy, { s: 0, duration: .6, ease: 'power3', overwrite: true, onUpdate: () => setSkew(proxy.s) }); }
+      }});
+
+      // Pinned #1: story, chaos pulled into one roof
+      const auva = $('.story__auva'), chips = gsap.utils.toArray('.chip');
+      const tx = () => auva.offsetLeft + auva.offsetWidth / 2, ty = () => auva.offsetTop + auva.offsetHeight / 2;
+      gsap.set('.story__b', { y: 40 });
+      gsap.timeline({ scrollTrigger: { trigger: '.story', start: 'top top', end: '+=220%', scrub: .6, pin: true, anticipatePin: 1, invalidateOnRefresh: true } })
+        .to(chips, { x: (i, el) => tx() - (el.offsetLeft + el.offsetWidth / 2), y: (i, el) => ty() - (el.offsetTop + el.offsetHeight / 2),
+          scale: .15, opacity: 0, rotation: () => gsap.utils.random(-200, 200), ease: 'power2.in', duration: 1, stagger: .12 }, 0)
+        .to('.story__a', { opacity: 0, y: -40, duration: .4 }, .9)
+        .to(auva, { scale: 1.18, duration: .35, ease: AUVA_EASE }, 1.0)
+        .to(auva, { scale: 1, duration: .35 }, 1.35)
+        .to('.story__b', { opacity: 1, y: 0, duration: .5 }, 1.15)
+        .to({}, { duration: .6 });
+
+      // Reveals (one signature per section)
+      gsap.from('.logo-ph,.stat', { y: 30, opacity: 0, duration: .8, stagger: .06, ease: OUT, scrollTrigger: { trigger: '.proof', start: 'top 80%' } });
+      gsap.from('.path', { y: 60, opacity: 0, duration: .9, stagger: .12, ease: OUT, scrollTrigger: { trigger: '.paths__grid', start: 'top 85%' } });
+      $$('.lever').forEach(l => ScrollTrigger.create({ trigger: l, start: 'top 85%', onEnter: () => l.classList.add('is-on') }));
+      gsap.from('.div', { y: 60, opacity: 0, duration: .9, stagger: .15, ease: OUT, scrollTrigger: { trigger: '.divs .g', start: 'top 85%' } });
+      gsap.from('.mock', { x: i => [-120, 120, -80, 80][i], y: 60, rotation: i => [-6, 5, -4, 3][i], opacity: 0, duration: 1.1, stagger: .1, ease: OUT,
+        scrollTrigger: { trigger: '.mocks', start: 'top 80%' } });
+      gsap.from('.prow', { y: 60, opacity: 0, duration: .9, stagger: .08, ease: OUT, scrollTrigger: { trigger: '.plist', start: 'top 85%' } });
+      gsap.from('#pricing-teaser .tier', { y: 40, opacity: 0, duration: .8, stagger: .1, ease: OUT, scrollTrigger: { trigger: '#pricing-teaser .g', start: 'top 85%' } });
+      gsap.from('.quote', { y: 60, opacity: 0, duration: .9, stagger: .12, ease: OUT, scrollTrigger: { trigger: '.voices .g', start: 'top 85%' } });
+      gsap.from('.cta h2', { y: 80, opacity: 0, duration: 1.2, ease: OUT, scrollTrigger: { trigger: '.cta', start: 'top 60%' } });
+
+      // Pinned #2: The One-Roof Method (horizontal)
+      const tr = $('.track'), dist = () => tr.scrollWidth - innerWidth;
+      gsap.timeline({ scrollTrigger: { trigger: '.proc__pin', start: 'top top', end: () => '+=' + dist(), pin: true, scrub: .8, invalidateOnRefresh: true } })
+        .to(tr, { x: () => -dist(), ease: 'none' }, 0)
+        .to('.prog i', { scaleX: 1, ease: 'none' }, 0)
+        .to('.prog__dot', { left: '100%', xPercent: -100, ease: 'none' }, 0);
+
+      // Stickers
+      gsap.from('.sticker', { scale: 0, rotation: () => gsap.utils.random(-90, 90), duration: .8, stagger: .08, ease: OUT, scrollTrigger: { trigger: '.cta', start: 'top 70%' } });
+      Draggable.create('.sticker', { type: 'x,y', bounds: '.cta',
+        onPress() { gsap.to(this.target, { scale: 1.15, duration: .2 }); },
+        onRelease() { gsap.to(this.target, { scale: 1, rotation: gsap.utils.random(-15, 15), duration: .6, ease: OUT }); } });
+    });
+    ctx.add('intro', () => {
+      gsap.to('.hero__title .in', { yPercent: 0, duration: 1.2, ease: OUT, stagger: .1 });
+      gsap.to('.hero__auva', { scale: 1, rotation: 0, opacity: 1, duration: 1.4, ease: AUVA_EASE, delay: .2 });
+      gsap.to('.hero .tag,.hero__sub,.hero__row', { y: 0, opacity: 1, duration: .9, stagger: .1, delay: .4, ease: OUT });
+    });
+    homeCtx = ctx; ScrollTrigger.refresh();
+  }
+
+  function initCase() {
+    if (reduce) return;
+    const ctx = gsap.context(() => {
+      gsap.set('.case__title .ch', { yPercent: 110 });
+      gsap.set('.case__auva', { scale: .5, rotation: -12, opacity: 0 });
+      gsap.from('.shot', { y: 80, opacity: 0, duration: .9, stagger: .12, ease: OUT, scrollTrigger: { trigger: '.shots', start: 'top 85%' } });
+      gsap.from('.cols > div', { y: 40, opacity: 0, duration: .9, stagger: .1, ease: OUT, scrollTrigger: { trigger: '.cols', start: 'top 85%' } });
+    });
+    ctx.add('intro', () => {
+      gsap.to('.case__title .ch', { yPercent: 0, duration: 1, ease: OUT, stagger: .025 });
+      gsap.to('.case__auva', { scale: 1, rotation: 0, opacity: 1, duration: 1.2, ease: AUVA_EASE, delay: .2 });
+    });
+    caseCtx = ctx; ScrollTrigger.refresh();
+  }
+
+  function initPricing() {
+    if (reduce) return;
+    const ctx = gsap.context(() => { gsap.set('.pv h1,.pv .lead,.tabs,.pv .tier', { y: 24, opacity: 0 }); });
+    ctx.add('intro', () => gsap.to('.pv h1,.pv .lead,.tabs,.pv .tier', { y: 0, opacity: 1, duration: .8, stagger: .06, ease: OUT }));
+    pricingCtx = ctx; ScrollTrigger.refresh();
+  }
+
+  function showView(r) {
+    homeCtx && homeCtx.revert(); caseCtx && caseCtx.revert(); pricingCtx && pricingCtx.revert(); homeCtx = caseCtx = pricingCtx = null;
+    gsap.set(peek, { scale: 0, opacity: 0 });
+    gsap.set(work, { clearProps: 'backgroundColor,color' }); gsap.set(rows, { clearProps: 'opacity' });
+    Object.entries(views).forEach(([k, el]) => el.hidden = k !== r.view);
+    if (r.view === 'case') buildCase(r.slug);
+    lenis.scrollTo(0, { immediate: true, force: true });
+    r.view === 'home' ? initHome() : r.view === 'case' ? initCase() : initPricing();
+    if (r.anchor) lenis.scrollTo(r.anchor, { immediate: true, force: true });
+    current = r.view;
+  }
+
+  const parseHash = () => {
+    const m = location.hash.match(/^#\/work\/([\w-]+)/);
+    if (m) return { view: 'case', slug: m[1] };
+    if (location.hash === '#/pricing') return { view: 'pricing' };
+    return { view: 'home' };
+  };
+
+  function navigate(r) {
+    if (busy) return;
+    if (reduce) { showView(r); return; }
+    busy = true;
+    const p = projects.find(x => x.slug === r.slug);
+    $('.wipe__label').textContent = r.view === 'case' ? (p ? p.title : 'Work') : r.view === 'pricing' ? 'Pricing' : 'Auverta';
+    setMood($('.wipe__mid'), r.view === 'case' && p ? p.mood : 'happy');
+    gsap.to(peek, { scale: 0, opacity: 0, duration: .2 });
+    const tl = gsap.timeline({ onComplete: () => busy = false });
+    tl.add(coverTL(), 0)
+      .fromTo('.wipe__mid', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .4, ease: OUT }, .75)
+      .add(() => showView(r), 1.25)
+      .to('.wipe__mid', { opacity: 0, y: -30, duration: .3 }, 1.55)
+      .add(exitTL([...layers].reverse()), 1.6)
+      .add(() => ctxOf(r.view)?.intro(), 2.0);
+  }
+
+  /* ============ LINKS ============ */
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]'); if (!a) return;
+    const h = a.getAttribute('href'); e.preventDefault();
+    if (h.startsWith('#/')) {
+      if (location.hash === h || (h === '#/' && current === 'home')) { if (h === '#/') lenis.scrollTo(0, { duration: 1.4 }); return; }
+      location.hash = h; return;
+    }
+    if (current !== 'home') { history.replaceState(null, '', '#/'); navigate({ view: 'home', anchor: h }); }
+    else lenis.scrollTo(h, { duration: 1.4 });
+  });
+  addEventListener('hashchange', () => navigate(parseHash()));
+  document.fonts && document.fonts.ready.then(() => ScrollTrigger.refresh());
+
+  /* ============ PRELOADER: Auva wakes up ============ */
+  function boot() {
+    const r = parseHash(), preEl = pre.el;
+    if (reduce) { preEl.remove(); showView(r); return; }
+    layers.forEach(L => { Object.assign(L.p, { tl: -10, tr: -10, bl: 110, br: 110 }); draw(L); });
+    Object.assign(pre.p, { tl: -10, tr: -10, bl: 110, br: 110 });
+    showView(r);
+    const count = $('.pre__count'), o = { v: 0 }, face = $('.pre__auva');
+    gsap.timeline()
+      .to(o, { v: 100, duration: 2.4, ease: 'power2.inOut', onUpdate: () => count.textContent = Math.round(o.v) }, 0)
+      .from(face, { scale: .5, opacity: 0, duration: .8, ease: AUVA_EASE }, 0)
+      .to(face, { rotation: 4, yoyo: true, repeat: 5, duration: .4, ease: 'sine.inOut' }, .2)
+      .add(() => setMood(preEl, 'wow'), 2.5)
+      .fromTo(face, { scale: 1 }, { scale: 1.25, duration: .25, yoyo: true, repeat: 1, ease: 'power2.out' }, 2.5)
+      .fromTo('.pre__hi', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: .5, ease: OUT }, 2.55)
+      .add(() => setMood(preEl, 'happy'), 2.85)
+      .to($$('.eL,.eR', preEl), { scaleY: .1, duration: .08, yoyo: true, repeat: 3, repeatDelay: .12 }, 3.0)
+      .add(exitTL([pre, ...[...layers].reverse()]), 3.8)
+      .add(() => { lenis.start(); ctxOf(r.view)?.intro(); }, 4.4)
+      .add(() => { preEl.style.pointerEvents = 'none'; preEl.remove(); }, 5.2);
+  }
+  boot();
+})();
+</script>
+</body>
+</html>

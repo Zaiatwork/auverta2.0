@@ -1,0 +1,176 @@
+@import 'tailwindcss';
+
+/* "Futuristic Luxury" brand tokens. Hex codes are fixed. In Tailwind v4 @theme both generates the
+   utilities (bg-abyss, text-toxic-lime, ...) and emits the :root custom properties. */
+@theme {
+  --color-abyss: #09090f; /* Abyss: near-black base canvas */
+  --color-deep-layer: #1c1a2e; /* Deep Layer: cards, modals, surface */
+  --color-electric-violet: #5821fa; /* Electric Violet: brand hero, glows, keylines */
+  --color-toxic-lime: #c4ff00; /* Toxic Lime: CTA pop, buttons, badges, magnetic cursor */
+  --color-hot-magenta: #ff2daf; /* Hot Magenta: energy burst, drops, highlights */
+  --color-ghost-white: #f5f0ff; /* Ghost White: primary text, headings */
+  --color-paper: #f5f0ff; /* light canvas; same value as ghost-white but never remapped by .scope-light */
+
+  --font-display: var(--font-ghiga), 'Arial Black', sans-serif;
+  --font-sans: var(--font-montserrat), system-ui, sans-serif;
+  --ease-fluid: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+:root {
+  --vw: 1vw;
+  --vh: 1vh;
+  --gutter: max(10px, 1.2rem);
+  --bg-offset: max(180px, 14vw);
+  --hd-height: max(7rem, 60px);
+  --card-aspect: 0.54845; /* tall project slit: width / height */
+  --col-underlay: rgba(7, 5, 14, 0.94);
+  --col-border: rgba(245, 240, 255, 0.08);
+  --col-glow-border: rgba(88, 33, 250, 0.3);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* /projects shell */
+.Layout_ch__gY9l3 {
+  height: calc(var(--vh) * 100);
+  overflow: auto;
+  will-change: transform;
+  background: var(--color-abyss);
+}
+.home_grid-parent___IPQI {
+  overflow: hidden;
+}
+.home_switch__dKdZn {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* About / Labs overlay */
+.about_about__cKuvP {
+  position: absolute;
+  inset: 0;
+  z-index: 9;
+  opacity: 0;
+  pointer-events: none;
+  overflow-y: auto;
+  padding: var(--hd-height) var(--gutter) 6rem;
+  transition: opacity 0.6s var(--ease-out-expo);
+}
+.about_about__cKuvP[data-open='true'] {
+  opacity: 1;
+  pointer-events: auto;
+}
+.about_about-underlay__MGzzV {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: var(--col-underlay);
+}
+.about_section__x1 {
+  border-top: 1px solid var(--col-border);
+  padding-top: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gutter);
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+}
+@media (max-width: 768px) {
+  .about_section__x1 {
+    grid-template-columns: 1fr;
+  }
+}
+.about_link__u1 {
+  position: relative;
+  display: inline-block;
+}
+.about_link__u1::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: -2px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.6s var(--ease-out-expo);
+}
+.about_link__u1:hover::after,
+.about_link__u1:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-abyss);
+}
+
+body {
+  background-color: var(--color-abyss);
+  color: var(--color-ghost-white);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-toxic-lime);
+  color: var(--color-abyss);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-toxic-lime);
+  outline-offset: 3px;
+}
+
+/* Light canvas: remaps the "ghost-white" text token to abyss so existing text-ghost-white/NN utilities become ink.
+   .scope-dark (cards) maps it back, so cards stay deep-layer with light type. */
+.scope-light {
+  --color-ghost-white: var(--color-abyss);
+  background: var(--color-paper);
+  color: var(--color-abyss);
+}
+.scope-light :focus-visible {
+  outline-color: var(--color-electric-violet);
+}
+.scope-dark {
+  --color-ghost-white: var(--color-paper);
+  color: var(--color-paper);
+}
+.scope-dark :focus-visible {
+  outline-color: var(--color-toxic-lime);
+}
+
+@keyframes ripple {
+  from {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.8;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

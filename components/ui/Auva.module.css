@@ -1,0 +1,28 @@
+.auva { width: 100%; height: auto; display: block; overflow: visible; }
+.eye { transform-box: fill-box; transform-origin: center; }
+.sL, .sR, .mw, .mf, .gl, .zzz { display: none; }
+
+.auva[data-mood='sleep'] :is(.eye, .ms) { display: none; }
+.auva[data-mood='sleep'] :is(.sL, .sR, .mf, .zzz) { display: block; }
+.auva[data-mood='wow'] .ms { display: none; }
+.auva[data-mood='wow'] .mw { display: block; }
+.auva[data-mood='wink'] .eyeR { display: none; }
+.auva[data-mood='wink'] .sR { display: block; }
+.auva[data-mood='cool'] .gl { display: block; }
+
+.sclera { fill: var(--soft); }
+.pupil { fill: var(--ink); }
+.shine { fill: var(--soft); opacity: 0.28; }
+.lid { stroke: var(--ink); stroke-width: 5; fill: none; stroke-linecap: round; }
+.smile { stroke: var(--soft); stroke-width: 6; fill: none; stroke-linecap: round; }
+.mw { fill: var(--ink); }
+.mf { stroke: var(--soft); stroke-width: 5; stroke-linecap: round; }
+.gl { fill: color-mix(in srgb, var(--ink) 55%, transparent); stroke: var(--soft); stroke-width: 5; }
+.zzz text { animation: zz 2s infinite; font-family: var(--font-display); font-weight: 800; fill: var(--pink); }
+.zzz text:nth-child(2) { animation-delay: 0.7s; }
+
+@keyframes zz {
+  0% { opacity: 0; translate: 0 8px; }
+  50% { opacity: 1; }
+  100% { opacity: 0; translate: 6px -14px; }
+}

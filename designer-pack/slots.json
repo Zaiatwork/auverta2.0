@@ -1,0 +1,1424 @@
+[
+  {
+    "id": "AUVA-HAPPY",
+    "group": "Auva",
+    "where": "Hero, story, closing screen (default mood)",
+    "w": 2000,
+    "h": 2000,
+    "format": "WebP or PNG, transparent",
+    "maxKB": 150,
+    "transparent": true,
+    "paths": [
+      "public/assets/auva/happy.webp",
+      "public/assets/auva/happy.avif",
+      "public/assets/auva/happy.png",
+      "public/assets/auva/happy.jpg"
+    ]
+  },
+  {
+    "id": "AUVA-WOW",
+    "group": "Auva",
+    "where": "Preloader, speech bubble, work peek, wipe",
+    "w": 2000,
+    "h": 2000,
+    "format": "WebP or PNG, transparent",
+    "maxKB": 150,
+    "transparent": true,
+    "paths": [
+      "public/assets/auva/wow.webp",
+      "public/assets/auva/wow.avif",
+      "public/assets/auva/wow.png",
+      "public/assets/auva/wow.jpg"
+    ]
+  },
+  {
+    "id": "AUVA-WINK",
+    "group": "Auva",
+    "where": "One idea: social post mock",
+    "w": 2000,
+    "h": 2000,
+    "format": "WebP or PNG, transparent",
+    "maxKB": 150,
+    "transparent": true,
+    "paths": [
+      "public/assets/auva/wink.webp",
+      "public/assets/auva/wink.avif",
+      "public/assets/auva/wink.png",
+      "public/assets/auva/wink.jpg"
+    ]
+  },
+  {
+    "id": "AUVA-COOL",
+    "group": "Auva",
+    "where": "Closing screen, one idea: banner",
+    "w": 2000,
+    "h": 2000,
+    "format": "WebP or PNG, transparent",
+    "maxKB": 150,
+    "transparent": true,
+    "paths": [
+      "public/assets/auva/cool.webp",
+      "public/assets/auva/cool.avif",
+      "public/assets/auva/cool.png",
+      "public/assets/auva/cool.jpg"
+    ]
+  },
+  {
+    "id": "AUVA-SLEEP",
+    "group": "Auva",
+    "where": "Preloader (asleep), 404",
+    "w": 2000,
+    "h": 2000,
+    "format": "WebP or PNG, transparent",
+    "maxKB": 150,
+    "transparent": true,
+    "paths": [
+      "public/assets/auva/sleep.webp",
+      "public/assets/auva/sleep.avif",
+      "public/assets/auva/sleep.png",
+      "public/assets/auva/sleep.jpg"
+    ]
+  },
+  {
+    "id": "AUVA-HERO",
+    "group": "Auva",
+    "where": "Home, hero",
+    "w": 2000,
+    "h": 2000,
+    "format": "WebP or PNG, transparent",
+    "maxKB": 150,
+    "transparent": true,
+    "paths": [
+      "public/assets/auva/hero.webp",
+      "public/assets/auva/hero.avif",
+      "public/assets/auva/hero.png",
+      "public/assets/auva/hero.jpg"
+    ]
+  },
+  {
+    "id": "AUVA-404",
+    "group": "Auva",
+    "where": "404 page",
+    "w": 2000,
+    "h": 2000,
+    "format": "WebP or PNG, transparent",
+    "maxKB": 150,
+    "transparent": true,
+    "paths": [
+      "public/assets/auva/404.webp",
+      "public/assets/auva/404.avif",
+      "public/assets/auva/404.png",
+      "public/assets/auva/404.jpg"
+    ]
+  },
+  {
+    "id": "AUVA-LOOP-BLINK",
+    "group": "Auva",
+    "where": "Home, hero (optional replacement for the still)",
+    "w": 800,
+    "h": 800,
+    "format": "WebM with alpha (VP9)",
+    "maxKB": 1024,
+    "transparent": true,
+    "paths": [
+      "public/assets/auva/loop-blink.webm"
+    ]
+  },
+  {
+    "id": "AUVA-LOOP-WAVE",
+    "group": "Auva",
+    "where": "Home, hero (optional replacement for the still)",
+    "w": 800,
+    "h": 800,
+    "format": "WebM with alpha (VP9)",
+    "maxKB": 1024,
+    "transparent": true,
+    "paths": [
+      "public/assets/auva/loop-wave.webm"
+    ]
+  },
+  {
+    "id": "BRAND-LOGO-MARK-LIGHT",
+    "group": "Brand",
+    "where": "Navigation, footer, preloader",
+    "w": 256,
+    "h": 256,
+    "format": "SVG",
+    "maxKB": 20,
+    "transparent": true,
+    "paths": [
+      "public/assets/brand/logo-mark-light.svg"
+    ]
+  },
+  {
+    "id": "BRAND-LOGO-MARK-DARK",
+    "group": "Brand",
+    "where": "Navigation, footer, preloader",
+    "w": 256,
+    "h": 256,
+    "format": "SVG",
+    "maxKB": 20,
+    "transparent": true,
+    "paths": [
+      "public/assets/brand/logo-mark-dark.svg"
+    ]
+  },
+  {
+    "id": "BRAND-WORDMARK-LIGHT",
+    "group": "Brand",
+    "where": "Navigation, footer, preloader",
+    "w": 1534,
+    "h": 288,
+    "format": "SVG",
+    "maxKB": 20,
+    "transparent": true,
+    "paths": [
+      "public/assets/brand/wordmark-light.svg"
+    ]
+  },
+  {
+    "id": "BRAND-WORDMARK-DARK",
+    "group": "Brand",
+    "where": "Navigation, footer, preloader",
+    "w": 1534,
+    "h": 288,
+    "format": "SVG",
+    "maxKB": 20,
+    "transparent": true,
+    "paths": [
+      "public/assets/brand/wordmark-dark.svg"
+    ]
+  },
+  {
+    "id": "BRAND-FAVICON-32",
+    "group": "Brand",
+    "where": "Browser tab, home-screen icon, PWA",
+    "w": 32,
+    "h": 32,
+    "format": "PNG",
+    "maxKB": 15,
+    "transparent": false,
+    "paths": [
+      "public/assets/brand/favicon-32.png"
+    ]
+  },
+  {
+    "id": "BRAND-FAVICON-180",
+    "group": "Brand",
+    "where": "Browser tab, home-screen icon, PWA",
+    "w": 180,
+    "h": 180,
+    "format": "PNG",
+    "maxKB": 15,
+    "transparent": false,
+    "paths": [
+      "public/assets/brand/favicon-180.png"
+    ]
+  },
+  {
+    "id": "BRAND-FAVICON-512",
+    "group": "Brand",
+    "where": "Browser tab, home-screen icon, PWA",
+    "w": 512,
+    "h": 512,
+    "format": "PNG",
+    "maxKB": 40,
+    "transparent": false,
+    "paths": [
+      "public/assets/brand/favicon-512.png"
+    ]
+  },
+  {
+    "id": "BRAND-OG-DEFAULT",
+    "group": "Brand",
+    "where": "Link previews for pages without their own image",
+    "w": 1200,
+    "h": 630,
+    "format": "PNG or JPG",
+    "maxKB": 300,
+    "transparent": false,
+    "paths": [
+      "public/assets/brand/og-default.png",
+      "public/assets/brand/og-default.jpg"
+    ]
+  },
+  {
+    "id": "WORK-NANO-BANANA-COVER",
+    "group": "Work",
+    "where": "/work (project card), related work on service pages",
+    "w": 1600,
+    "h": 2000,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/nano-banana/cover.webp",
+      "public/assets/work/nano-banana/cover.avif",
+      "public/assets/work/nano-banana/cover.png",
+      "public/assets/work/nano-banana/cover.jpg"
+    ]
+  },
+  {
+    "id": "WORK-NANO-BANANA-HERO",
+    "group": "Work",
+    "where": "/work/nano-banana (hero)",
+    "w": 2400,
+    "h": 1350,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/nano-banana/hero.webp",
+      "public/assets/work/nano-banana/hero.avif",
+      "public/assets/work/nano-banana/hero.png",
+      "public/assets/work/nano-banana/hero.jpg"
+    ]
+  },
+  {
+    "id": "WORK-NANO-BANANA-GALLERY-1",
+    "group": "Work",
+    "where": "/work/nano-banana (gallery)",
+    "w": 1600,
+    "h": 2000,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/nano-banana/gallery-1.webp",
+      "public/assets/work/nano-banana/gallery-1.avif",
+      "public/assets/work/nano-banana/gallery-1.png",
+      "public/assets/work/nano-banana/gallery-1.jpg"
+    ]
+  },
+  {
+    "id": "WORK-NANO-BANANA-GALLERY-2",
+    "group": "Work",
+    "where": "/work/nano-banana (gallery)",
+    "w": 1600,
+    "h": 2000,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/nano-banana/gallery-2.webp",
+      "public/assets/work/nano-banana/gallery-2.avif",
+      "public/assets/work/nano-banana/gallery-2.png",
+      "public/assets/work/nano-banana/gallery-2.jpg"
+    ]
+  },
+  {
+    "id": "WORK-NANO-BANANA-GALLERY-3",
+    "group": "Work",
+    "where": "/work/nano-banana (gallery)",
+    "w": 1600,
+    "h": 2000,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/nano-banana/gallery-3.webp",
+      "public/assets/work/nano-banana/gallery-3.avif",
+      "public/assets/work/nano-banana/gallery-3.png",
+      "public/assets/work/nano-banana/gallery-3.jpg"
+    ]
+  },
+  {
+    "id": "WORK-NANO-BANANA-PEEK",
+    "group": "Work",
+    "where": "/ (selected work, hover peek card)",
+    "w": 800,
+    "h": 1000,
+    "format": "WebP",
+    "maxKB": 120,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/nano-banana/peek.webp",
+      "public/assets/work/nano-banana/peek.avif",
+      "public/assets/work/nano-banana/peek.png",
+      "public/assets/work/nano-banana/peek.jpg"
+    ]
+  },
+  {
+    "id": "WORK-NANO-BANANA-VIDEO-POSTER",
+    "group": "Work",
+    "where": "/work/nano-banana (video poster)",
+    "w": 1920,
+    "h": 1080,
+    "format": "WebP",
+    "maxKB": 200,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/nano-banana/video-poster.webp",
+      "public/assets/work/nano-banana/video-poster.avif",
+      "public/assets/work/nano-banana/video-poster.png",
+      "public/assets/work/nano-banana/video-poster.jpg"
+    ]
+  },
+  {
+    "id": "WORK-NANO-BANANA-VIDEO",
+    "group": "Work",
+    "where": "/work/nano-banana (video, optional)",
+    "w": 1920,
+    "h": 1080,
+    "format": "MP4 (H.264) and WebM (VP9), both",
+    "maxKB": 3072,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/nano-banana/video.mp4",
+      "public/assets/work/nano-banana/video.webm"
+    ]
+  },
+  {
+    "id": "WORK-MEET-AUVA-COVER",
+    "group": "Work",
+    "where": "/work (project card), related work on service pages",
+    "w": 1600,
+    "h": 2000,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/meet-auva/cover.webp",
+      "public/assets/work/meet-auva/cover.avif",
+      "public/assets/work/meet-auva/cover.png",
+      "public/assets/work/meet-auva/cover.jpg"
+    ]
+  },
+  {
+    "id": "WORK-MEET-AUVA-HERO",
+    "group": "Work",
+    "where": "/work/meet-auva (hero)",
+    "w": 2400,
+    "h": 1350,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/meet-auva/hero.webp",
+      "public/assets/work/meet-auva/hero.avif",
+      "public/assets/work/meet-auva/hero.png",
+      "public/assets/work/meet-auva/hero.jpg"
+    ]
+  },
+  {
+    "id": "WORK-MEET-AUVA-GALLERY-1",
+    "group": "Work",
+    "where": "/work/meet-auva (gallery)",
+    "w": 1600,
+    "h": 2000,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/meet-auva/gallery-1.webp",
+      "public/assets/work/meet-auva/gallery-1.avif",
+      "public/assets/work/meet-auva/gallery-1.png",
+      "public/assets/work/meet-auva/gallery-1.jpg"
+    ]
+  },
+  {
+    "id": "WORK-MEET-AUVA-GALLERY-2",
+    "group": "Work",
+    "where": "/work/meet-auva (gallery)",
+    "w": 1600,
+    "h": 2000,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/meet-auva/gallery-2.webp",
+      "public/assets/work/meet-auva/gallery-2.avif",
+      "public/assets/work/meet-auva/gallery-2.png",
+      "public/assets/work/meet-auva/gallery-2.jpg"
+    ]
+  },
+  {
+    "id": "WORK-MEET-AUVA-GALLERY-3",
+    "group": "Work",
+    "where": "/work/meet-auva (gallery)",
+    "w": 1600,
+    "h": 2000,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/meet-auva/gallery-3.webp",
+      "public/assets/work/meet-auva/gallery-3.avif",
+      "public/assets/work/meet-auva/gallery-3.png",
+      "public/assets/work/meet-auva/gallery-3.jpg"
+    ]
+  },
+  {
+    "id": "WORK-MEET-AUVA-PEEK",
+    "group": "Work",
+    "where": "/ (selected work, hover peek card)",
+    "w": 800,
+    "h": 1000,
+    "format": "WebP",
+    "maxKB": 120,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/meet-auva/peek.webp",
+      "public/assets/work/meet-auva/peek.avif",
+      "public/assets/work/meet-auva/peek.png",
+      "public/assets/work/meet-auva/peek.jpg"
+    ]
+  },
+  {
+    "id": "WORK-MEET-AUVA-VIDEO-POSTER",
+    "group": "Work",
+    "where": "/work/meet-auva (video poster)",
+    "w": 1920,
+    "h": 1080,
+    "format": "WebP",
+    "maxKB": 200,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/meet-auva/video-poster.webp",
+      "public/assets/work/meet-auva/video-poster.avif",
+      "public/assets/work/meet-auva/video-poster.png",
+      "public/assets/work/meet-auva/video-poster.jpg"
+    ]
+  },
+  {
+    "id": "WORK-MEET-AUVA-VIDEO",
+    "group": "Work",
+    "where": "/work/meet-auva (video, optional)",
+    "w": 1920,
+    "h": 1080,
+    "format": "MP4 (H.264) and WebM (VP9), both",
+    "maxKB": 3072,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/meet-auva/video.mp4",
+      "public/assets/work/meet-auva/video.webm"
+    ]
+  },
+  {
+    "id": "WORK-ZERO-JUGGLING-COVER",
+    "group": "Work",
+    "where": "/work (project card), related work on service pages",
+    "w": 1600,
+    "h": 2000,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/zero-juggling/cover.webp",
+      "public/assets/work/zero-juggling/cover.avif",
+      "public/assets/work/zero-juggling/cover.png",
+      "public/assets/work/zero-juggling/cover.jpg"
+    ]
+  },
+  {
+    "id": "WORK-ZERO-JUGGLING-HERO",
+    "group": "Work",
+    "where": "/work/zero-juggling (hero)",
+    "w": 2400,
+    "h": 1350,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/zero-juggling/hero.webp",
+      "public/assets/work/zero-juggling/hero.avif",
+      "public/assets/work/zero-juggling/hero.png",
+      "public/assets/work/zero-juggling/hero.jpg"
+    ]
+  },
+  {
+    "id": "WORK-ZERO-JUGGLING-GALLERY-1",
+    "group": "Work",
+    "where": "/work/zero-juggling (gallery)",
+    "w": 1600,
+    "h": 2000,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/zero-juggling/gallery-1.webp",
+      "public/assets/work/zero-juggling/gallery-1.avif",
+      "public/assets/work/zero-juggling/gallery-1.png",
+      "public/assets/work/zero-juggling/gallery-1.jpg"
+    ]
+  },
+  {
+    "id": "WORK-ZERO-JUGGLING-GALLERY-2",
+    "group": "Work",
+    "where": "/work/zero-juggling (gallery)",
+    "w": 1600,
+    "h": 2000,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/zero-juggling/gallery-2.webp",
+      "public/assets/work/zero-juggling/gallery-2.avif",
+      "public/assets/work/zero-juggling/gallery-2.png",
+      "public/assets/work/zero-juggling/gallery-2.jpg"
+    ]
+  },
+  {
+    "id": "WORK-ZERO-JUGGLING-GALLERY-3",
+    "group": "Work",
+    "where": "/work/zero-juggling (gallery)",
+    "w": 1600,
+    "h": 2000,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/zero-juggling/gallery-3.webp",
+      "public/assets/work/zero-juggling/gallery-3.avif",
+      "public/assets/work/zero-juggling/gallery-3.png",
+      "public/assets/work/zero-juggling/gallery-3.jpg"
+    ]
+  },
+  {
+    "id": "WORK-ZERO-JUGGLING-PEEK",
+    "group": "Work",
+    "where": "/ (selected work, hover peek card)",
+    "w": 800,
+    "h": 1000,
+    "format": "WebP",
+    "maxKB": 120,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/zero-juggling/peek.webp",
+      "public/assets/work/zero-juggling/peek.avif",
+      "public/assets/work/zero-juggling/peek.png",
+      "public/assets/work/zero-juggling/peek.jpg"
+    ]
+  },
+  {
+    "id": "WORK-ZERO-JUGGLING-VIDEO-POSTER",
+    "group": "Work",
+    "where": "/work/zero-juggling (video poster)",
+    "w": 1920,
+    "h": 1080,
+    "format": "WebP",
+    "maxKB": 200,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/zero-juggling/video-poster.webp",
+      "public/assets/work/zero-juggling/video-poster.avif",
+      "public/assets/work/zero-juggling/video-poster.png",
+      "public/assets/work/zero-juggling/video-poster.jpg"
+    ]
+  },
+  {
+    "id": "WORK-ZERO-JUGGLING-VIDEO",
+    "group": "Work",
+    "where": "/work/zero-juggling (video, optional)",
+    "w": 1920,
+    "h": 1080,
+    "format": "MP4 (H.264) and WebM (VP9), both",
+    "maxKB": 3072,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/zero-juggling/video.mp4",
+      "public/assets/work/zero-juggling/video.webm"
+    ]
+  },
+  {
+    "id": "WORK-EXECUTION-COVER",
+    "group": "Work",
+    "where": "/work (project card), related work on service pages",
+    "w": 1600,
+    "h": 2000,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/execution/cover.webp",
+      "public/assets/work/execution/cover.avif",
+      "public/assets/work/execution/cover.png",
+      "public/assets/work/execution/cover.jpg"
+    ]
+  },
+  {
+    "id": "WORK-EXECUTION-HERO",
+    "group": "Work",
+    "where": "/work/execution (hero)",
+    "w": 2400,
+    "h": 1350,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/execution/hero.webp",
+      "public/assets/work/execution/hero.avif",
+      "public/assets/work/execution/hero.png",
+      "public/assets/work/execution/hero.jpg"
+    ]
+  },
+  {
+    "id": "WORK-EXECUTION-GALLERY-1",
+    "group": "Work",
+    "where": "/work/execution (gallery)",
+    "w": 1600,
+    "h": 2000,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/execution/gallery-1.webp",
+      "public/assets/work/execution/gallery-1.avif",
+      "public/assets/work/execution/gallery-1.png",
+      "public/assets/work/execution/gallery-1.jpg"
+    ]
+  },
+  {
+    "id": "WORK-EXECUTION-GALLERY-2",
+    "group": "Work",
+    "where": "/work/execution (gallery)",
+    "w": 1600,
+    "h": 2000,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/execution/gallery-2.webp",
+      "public/assets/work/execution/gallery-2.avif",
+      "public/assets/work/execution/gallery-2.png",
+      "public/assets/work/execution/gallery-2.jpg"
+    ]
+  },
+  {
+    "id": "WORK-EXECUTION-GALLERY-3",
+    "group": "Work",
+    "where": "/work/execution (gallery)",
+    "w": 1600,
+    "h": 2000,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/execution/gallery-3.webp",
+      "public/assets/work/execution/gallery-3.avif",
+      "public/assets/work/execution/gallery-3.png",
+      "public/assets/work/execution/gallery-3.jpg"
+    ]
+  },
+  {
+    "id": "WORK-EXECUTION-PEEK",
+    "group": "Work",
+    "where": "/ (selected work, hover peek card)",
+    "w": 800,
+    "h": 1000,
+    "format": "WebP",
+    "maxKB": 120,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/execution/peek.webp",
+      "public/assets/work/execution/peek.avif",
+      "public/assets/work/execution/peek.png",
+      "public/assets/work/execution/peek.jpg"
+    ]
+  },
+  {
+    "id": "WORK-EXECUTION-VIDEO-POSTER",
+    "group": "Work",
+    "where": "/work/execution (video poster)",
+    "w": 1920,
+    "h": 1080,
+    "format": "WebP",
+    "maxKB": 200,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/execution/video-poster.webp",
+      "public/assets/work/execution/video-poster.avif",
+      "public/assets/work/execution/video-poster.png",
+      "public/assets/work/execution/video-poster.jpg"
+    ]
+  },
+  {
+    "id": "WORK-EXECUTION-VIDEO",
+    "group": "Work",
+    "where": "/work/execution (video, optional)",
+    "w": 1920,
+    "h": 1080,
+    "format": "MP4 (H.264) and WebM (VP9), both",
+    "maxKB": 3072,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/execution/video.mp4",
+      "public/assets/work/execution/video.webm"
+    ]
+  },
+  {
+    "id": "WORK-FOUNDERS-COVER",
+    "group": "Work",
+    "where": "/work (project card), related work on service pages",
+    "w": 1600,
+    "h": 2000,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/founders/cover.webp",
+      "public/assets/work/founders/cover.avif",
+      "public/assets/work/founders/cover.png",
+      "public/assets/work/founders/cover.jpg"
+    ]
+  },
+  {
+    "id": "WORK-FOUNDERS-HERO",
+    "group": "Work",
+    "where": "/work/founders (hero)",
+    "w": 2400,
+    "h": 1350,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/founders/hero.webp",
+      "public/assets/work/founders/hero.avif",
+      "public/assets/work/founders/hero.png",
+      "public/assets/work/founders/hero.jpg"
+    ]
+  },
+  {
+    "id": "WORK-FOUNDERS-GALLERY-1",
+    "group": "Work",
+    "where": "/work/founders (gallery)",
+    "w": 1600,
+    "h": 2000,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/founders/gallery-1.webp",
+      "public/assets/work/founders/gallery-1.avif",
+      "public/assets/work/founders/gallery-1.png",
+      "public/assets/work/founders/gallery-1.jpg"
+    ]
+  },
+  {
+    "id": "WORK-FOUNDERS-GALLERY-2",
+    "group": "Work",
+    "where": "/work/founders (gallery)",
+    "w": 1600,
+    "h": 2000,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/founders/gallery-2.webp",
+      "public/assets/work/founders/gallery-2.avif",
+      "public/assets/work/founders/gallery-2.png",
+      "public/assets/work/founders/gallery-2.jpg"
+    ]
+  },
+  {
+    "id": "WORK-FOUNDERS-GALLERY-3",
+    "group": "Work",
+    "where": "/work/founders (gallery)",
+    "w": 1600,
+    "h": 2000,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/founders/gallery-3.webp",
+      "public/assets/work/founders/gallery-3.avif",
+      "public/assets/work/founders/gallery-3.png",
+      "public/assets/work/founders/gallery-3.jpg"
+    ]
+  },
+  {
+    "id": "WORK-FOUNDERS-PEEK",
+    "group": "Work",
+    "where": "/ (selected work, hover peek card)",
+    "w": 800,
+    "h": 1000,
+    "format": "WebP",
+    "maxKB": 120,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/founders/peek.webp",
+      "public/assets/work/founders/peek.avif",
+      "public/assets/work/founders/peek.png",
+      "public/assets/work/founders/peek.jpg"
+    ]
+  },
+  {
+    "id": "WORK-FOUNDERS-VIDEO-POSTER",
+    "group": "Work",
+    "where": "/work/founders (video poster)",
+    "w": 1920,
+    "h": 1080,
+    "format": "WebP",
+    "maxKB": 200,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/founders/video-poster.webp",
+      "public/assets/work/founders/video-poster.avif",
+      "public/assets/work/founders/video-poster.png",
+      "public/assets/work/founders/video-poster.jpg"
+    ]
+  },
+  {
+    "id": "WORK-FOUNDERS-VIDEO",
+    "group": "Work",
+    "where": "/work/founders (video, optional)",
+    "w": 1920,
+    "h": 1080,
+    "format": "MP4 (H.264) and WebM (VP9), both",
+    "maxKB": 3072,
+    "transparent": false,
+    "paths": [
+      "public/assets/work/founders/video.mp4",
+      "public/assets/work/founders/video.webm"
+    ]
+  },
+  {
+    "id": "IDEA-STARTUP-WEB",
+    "group": "One idea. Every format.",
+    "where": "/ (One idea. Every format.), \"Startups & founders\" tab",
+    "w": 1600,
+    "h": 1000,
+    "format": "WebP",
+    "maxKB": 180,
+    "transparent": false,
+    "paths": [
+      "public/assets/idea/startup/web.webp",
+      "public/assets/idea/startup/web.avif",
+      "public/assets/idea/startup/web.png",
+      "public/assets/idea/startup/web.jpg"
+    ]
+  },
+  {
+    "id": "IDEA-STARTUP-POST",
+    "group": "One idea. Every format.",
+    "where": "/ (One idea. Every format.), \"Startups & founders\" tab",
+    "w": 1080,
+    "h": 1080,
+    "format": "WebP",
+    "maxKB": 150,
+    "transparent": false,
+    "paths": [
+      "public/assets/idea/startup/post.webp",
+      "public/assets/idea/startup/post.avif",
+      "public/assets/idea/startup/post.png",
+      "public/assets/idea/startup/post.jpg"
+    ]
+  },
+  {
+    "id": "IDEA-STARTUP-REEL-POSTER",
+    "group": "One idea. Every format.",
+    "where": "/ (One idea. Every format.), \"Startups & founders\" tab",
+    "w": 1080,
+    "h": 1920,
+    "format": "WebP",
+    "maxKB": 150,
+    "transparent": false,
+    "paths": [
+      "public/assets/idea/startup/reel-poster.webp",
+      "public/assets/idea/startup/reel-poster.avif",
+      "public/assets/idea/startup/reel-poster.png",
+      "public/assets/idea/startup/reel-poster.jpg"
+    ]
+  },
+  {
+    "id": "IDEA-STARTUP-REEL",
+    "group": "One idea. Every format.",
+    "where": "/ (One idea. Every format.), \"Startups & founders\" tab",
+    "w": 1080,
+    "h": 1920,
+    "format": "MP4 (H.264)",
+    "maxKB": 5120,
+    "transparent": false,
+    "paths": [
+      "public/assets/idea/startup/reel.mp4"
+    ]
+  },
+  {
+    "id": "IDEA-STARTUP-BANNER",
+    "group": "One idea. Every format.",
+    "where": "/ (One idea. Every format.), \"Startups & founders\" tab",
+    "w": 1200,
+    "h": 628,
+    "format": "WebP",
+    "maxKB": 120,
+    "transparent": false,
+    "paths": [
+      "public/assets/idea/startup/banner.webp",
+      "public/assets/idea/startup/banner.avif",
+      "public/assets/idea/startup/banner.png",
+      "public/assets/idea/startup/banner.jpg"
+    ]
+  },
+  {
+    "id": "IDEA-SMALL-WEB",
+    "group": "One idea. Every format.",
+    "where": "/ (One idea. Every format.), \"Small businesses\" tab",
+    "w": 1600,
+    "h": 1000,
+    "format": "WebP",
+    "maxKB": 180,
+    "transparent": false,
+    "paths": [
+      "public/assets/idea/small/web.webp",
+      "public/assets/idea/small/web.avif",
+      "public/assets/idea/small/web.png",
+      "public/assets/idea/small/web.jpg"
+    ]
+  },
+  {
+    "id": "IDEA-SMALL-POST",
+    "group": "One idea. Every format.",
+    "where": "/ (One idea. Every format.), \"Small businesses\" tab",
+    "w": 1080,
+    "h": 1080,
+    "format": "WebP",
+    "maxKB": 150,
+    "transparent": false,
+    "paths": [
+      "public/assets/idea/small/post.webp",
+      "public/assets/idea/small/post.avif",
+      "public/assets/idea/small/post.png",
+      "public/assets/idea/small/post.jpg"
+    ]
+  },
+  {
+    "id": "IDEA-SMALL-REEL-POSTER",
+    "group": "One idea. Every format.",
+    "where": "/ (One idea. Every format.), \"Small businesses\" tab",
+    "w": 1080,
+    "h": 1920,
+    "format": "WebP",
+    "maxKB": 150,
+    "transparent": false,
+    "paths": [
+      "public/assets/idea/small/reel-poster.webp",
+      "public/assets/idea/small/reel-poster.avif",
+      "public/assets/idea/small/reel-poster.png",
+      "public/assets/idea/small/reel-poster.jpg"
+    ]
+  },
+  {
+    "id": "IDEA-SMALL-REEL",
+    "group": "One idea. Every format.",
+    "where": "/ (One idea. Every format.), \"Small businesses\" tab",
+    "w": 1080,
+    "h": 1920,
+    "format": "MP4 (H.264)",
+    "maxKB": 5120,
+    "transparent": false,
+    "paths": [
+      "public/assets/idea/small/reel.mp4"
+    ]
+  },
+  {
+    "id": "IDEA-SMALL-BANNER",
+    "group": "One idea. Every format.",
+    "where": "/ (One idea. Every format.), \"Small businesses\" tab",
+    "w": 1200,
+    "h": 628,
+    "format": "WebP",
+    "maxKB": 120,
+    "transparent": false,
+    "paths": [
+      "public/assets/idea/small/banner.webp",
+      "public/assets/idea/small/banner.avif",
+      "public/assets/idea/small/banner.png",
+      "public/assets/idea/small/banner.jpg"
+    ]
+  },
+  {
+    "id": "IDEA-BRAND-WEB",
+    "group": "One idea. Every format.",
+    "where": "/ (One idea. Every format.), \"Established brands\" tab",
+    "w": 1600,
+    "h": 1000,
+    "format": "WebP",
+    "maxKB": 180,
+    "transparent": false,
+    "paths": [
+      "public/assets/idea/brand/web.webp",
+      "public/assets/idea/brand/web.avif",
+      "public/assets/idea/brand/web.png",
+      "public/assets/idea/brand/web.jpg"
+    ]
+  },
+  {
+    "id": "IDEA-BRAND-POST",
+    "group": "One idea. Every format.",
+    "where": "/ (One idea. Every format.), \"Established brands\" tab",
+    "w": 1080,
+    "h": 1080,
+    "format": "WebP",
+    "maxKB": 150,
+    "transparent": false,
+    "paths": [
+      "public/assets/idea/brand/post.webp",
+      "public/assets/idea/brand/post.avif",
+      "public/assets/idea/brand/post.png",
+      "public/assets/idea/brand/post.jpg"
+    ]
+  },
+  {
+    "id": "IDEA-BRAND-REEL-POSTER",
+    "group": "One idea. Every format.",
+    "where": "/ (One idea. Every format.), \"Established brands\" tab",
+    "w": 1080,
+    "h": 1920,
+    "format": "WebP",
+    "maxKB": 150,
+    "transparent": false,
+    "paths": [
+      "public/assets/idea/brand/reel-poster.webp",
+      "public/assets/idea/brand/reel-poster.avif",
+      "public/assets/idea/brand/reel-poster.png",
+      "public/assets/idea/brand/reel-poster.jpg"
+    ]
+  },
+  {
+    "id": "IDEA-BRAND-REEL",
+    "group": "One idea. Every format.",
+    "where": "/ (One idea. Every format.), \"Established brands\" tab",
+    "w": 1080,
+    "h": 1920,
+    "format": "MP4 (H.264)",
+    "maxKB": 5120,
+    "transparent": false,
+    "paths": [
+      "public/assets/idea/brand/reel.mp4"
+    ]
+  },
+  {
+    "id": "IDEA-BRAND-BANNER",
+    "group": "One idea. Every format.",
+    "where": "/ (One idea. Every format.), \"Established brands\" tab",
+    "w": 1200,
+    "h": 628,
+    "format": "WebP",
+    "maxKB": 120,
+    "transparent": false,
+    "paths": [
+      "public/assets/idea/brand/banner.webp",
+      "public/assets/idea/brand/banner.avif",
+      "public/assets/idea/brand/banner.png",
+      "public/assets/idea/brand/banner.jpg"
+    ]
+  },
+  {
+    "id": "SERVICE-WEB-DESIGN-DEVELOPMENT-HERO",
+    "group": "Services",
+    "where": "/services (card) and /services/web-design-development (hero)",
+    "w": 2400,
+    "h": 1350,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/services/web-design-development/hero.webp",
+      "public/assets/services/web-design-development/hero.avif",
+      "public/assets/services/web-design-development/hero.png",
+      "public/assets/services/web-design-development/hero.jpg"
+    ]
+  },
+  {
+    "id": "SERVICE-BRANDING-IDENTITY-HERO",
+    "group": "Services",
+    "where": "/services (card) and /services/branding-identity (hero)",
+    "w": 2400,
+    "h": 1350,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/services/branding-identity/hero.webp",
+      "public/assets/services/branding-identity/hero.avif",
+      "public/assets/services/branding-identity/hero.png",
+      "public/assets/services/branding-identity/hero.jpg"
+    ]
+  },
+  {
+    "id": "SERVICE-AI-CONTENT-HERO",
+    "group": "Services",
+    "where": "/services (card) and /services/ai-content (hero)",
+    "w": 2400,
+    "h": 1350,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/services/ai-content/hero.webp",
+      "public/assets/services/ai-content/hero.avif",
+      "public/assets/services/ai-content/hero.png",
+      "public/assets/services/ai-content/hero.jpg"
+    ]
+  },
+  {
+    "id": "SERVICE-DIGITAL-MARKETING-HERO",
+    "group": "Services",
+    "where": "/services (card) and /services/digital-marketing (hero)",
+    "w": 2400,
+    "h": 1350,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/services/digital-marketing/hero.webp",
+      "public/assets/services/digital-marketing/hero.avif",
+      "public/assets/services/digital-marketing/hero.png",
+      "public/assets/services/digital-marketing/hero.jpg"
+    ]
+  },
+  {
+    "id": "SERVICE-GRAPHIC-DESIGN-VIDEO-HERO",
+    "group": "Services",
+    "where": "/services (card) and /services/graphic-design-video (hero)",
+    "w": 2400,
+    "h": 1350,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/services/graphic-design-video/hero.webp",
+      "public/assets/services/graphic-design-video/hero.avif",
+      "public/assets/services/graphic-design-video/hero.png",
+      "public/assets/services/graphic-design-video/hero.jpg"
+    ]
+  },
+  {
+    "id": "START-STARTUP-HERO",
+    "group": "Audience pages",
+    "where": "/start/startups (hero)",
+    "w": 2400,
+    "h": 1350,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/start/startups/hero.webp",
+      "public/assets/start/startups/hero.avif",
+      "public/assets/start/startups/hero.png",
+      "public/assets/start/startups/hero.jpg"
+    ]
+  },
+  {
+    "id": "START-SMALL-HERO",
+    "group": "Audience pages",
+    "where": "/start/small-business (hero)",
+    "w": 2400,
+    "h": 1350,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/start/small-business/hero.webp",
+      "public/assets/start/small-business/hero.avif",
+      "public/assets/start/small-business/hero.png",
+      "public/assets/start/small-business/hero.jpg"
+    ]
+  },
+  {
+    "id": "START-BRAND-HERO",
+    "group": "Audience pages",
+    "where": "/start/established-brands (hero)",
+    "w": 2400,
+    "h": 1350,
+    "format": "WebP (AVIF welcome)",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/start/established-brands/hero.webp",
+      "public/assets/start/established-brands/hero.avif",
+      "public/assets/start/established-brands/hero.png",
+      "public/assets/start/established-brands/hero.jpg"
+    ]
+  },
+  {
+    "id": "STUDIO-TEAM-1",
+    "group": "Studio",
+    "where": "/studio (team)",
+    "w": 1200,
+    "h": 1500,
+    "format": "WebP",
+    "maxKB": 200,
+    "transparent": false,
+    "paths": [
+      "public/assets/studio/team-1.webp",
+      "public/assets/studio/team-1.avif",
+      "public/assets/studio/team-1.png",
+      "public/assets/studio/team-1.jpg"
+    ]
+  },
+  {
+    "id": "STUDIO-TEAM-2",
+    "group": "Studio",
+    "where": "/studio (team)",
+    "w": 1200,
+    "h": 1500,
+    "format": "WebP",
+    "maxKB": 200,
+    "transparent": false,
+    "paths": [
+      "public/assets/studio/team-2.webp",
+      "public/assets/studio/team-2.avif",
+      "public/assets/studio/team-2.png",
+      "public/assets/studio/team-2.jpg"
+    ]
+  },
+  {
+    "id": "STUDIO-TEAM-3",
+    "group": "Studio",
+    "where": "/studio (team)",
+    "w": 1200,
+    "h": 1500,
+    "format": "WebP",
+    "maxKB": 200,
+    "transparent": false,
+    "paths": [
+      "public/assets/studio/team-3.webp",
+      "public/assets/studio/team-3.avif",
+      "public/assets/studio/team-3.png",
+      "public/assets/studio/team-3.jpg"
+    ]
+  },
+  {
+    "id": "STUDIO-TEAM-4",
+    "group": "Studio",
+    "where": "/studio (team)",
+    "w": 1200,
+    "h": 1500,
+    "format": "WebP",
+    "maxKB": 200,
+    "transparent": false,
+    "paths": [
+      "public/assets/studio/team-4.webp",
+      "public/assets/studio/team-4.avif",
+      "public/assets/studio/team-4.png",
+      "public/assets/studio/team-4.jpg"
+    ]
+  },
+  {
+    "id": "STUDIO-ROOM",
+    "group": "Studio",
+    "where": "/studio (studio shot)",
+    "w": 2400,
+    "h": 1350,
+    "format": "WebP",
+    "maxKB": 250,
+    "transparent": false,
+    "paths": [
+      "public/assets/studio/room.webp",
+      "public/assets/studio/room.avif",
+      "public/assets/studio/room.png",
+      "public/assets/studio/room.jpg"
+    ]
+  },
+  {
+    "id": "JOURNAL-WHY-ONE-STUDIO-COVER",
+    "group": "Journal",
+    "where": "/journal (card) and /journal/why-one-studio (cover)",
+    "w": 1600,
+    "h": 900,
+    "format": "WebP",
+    "maxKB": 180,
+    "transparent": false,
+    "paths": [
+      "public/assets/journal/why-one-studio/cover.webp",
+      "public/assets/journal/why-one-studio/cover.avif",
+      "public/assets/journal/why-one-studio/cover.png",
+      "public/assets/journal/why-one-studio/cover.jpg"
+    ]
+  },
+  {
+    "id": "JOURNAL-AI-WITH-A-HUMAN-COVER",
+    "group": "Journal",
+    "where": "/journal (card) and /journal/ai-with-a-human (cover)",
+    "w": 1600,
+    "h": 900,
+    "format": "WebP",
+    "maxKB": 180,
+    "transparent": false,
+    "paths": [
+      "public/assets/journal/ai-with-a-human/cover.webp",
+      "public/assets/journal/ai-with-a-human/cover.avif",
+      "public/assets/journal/ai-with-a-human/cover.png",
+      "public/assets/journal/ai-with-a-human/cover.jpg"
+    ]
+  },
+  {
+    "id": "PROOF-LOGO-1",
+    "group": "Proof",
+    "where": "/ (proof strip)",
+    "w": 240,
+    "h": 48,
+    "format": "SVG",
+    "maxKB": 20,
+    "transparent": true,
+    "paths": [
+      "public/assets/proof/logo-1.svg"
+    ]
+  },
+  {
+    "id": "PROOF-LOGO-2",
+    "group": "Proof",
+    "where": "/ (proof strip)",
+    "w": 240,
+    "h": 48,
+    "format": "SVG",
+    "maxKB": 20,
+    "transparent": true,
+    "paths": [
+      "public/assets/proof/logo-2.svg"
+    ]
+  },
+  {
+    "id": "PROOF-LOGO-3",
+    "group": "Proof",
+    "where": "/ (proof strip)",
+    "w": 240,
+    "h": 48,
+    "format": "SVG",
+    "maxKB": 20,
+    "transparent": true,
+    "paths": [
+      "public/assets/proof/logo-3.svg"
+    ]
+  },
+  {
+    "id": "PROOF-LOGO-4",
+    "group": "Proof",
+    "where": "/ (proof strip)",
+    "w": 240,
+    "h": 48,
+    "format": "SVG",
+    "maxKB": 20,
+    "transparent": true,
+    "paths": [
+      "public/assets/proof/logo-4.svg"
+    ]
+  },
+  {
+    "id": "PROOF-LOGO-5",
+    "group": "Proof",
+    "where": "/ (proof strip)",
+    "w": 240,
+    "h": 48,
+    "format": "SVG",
+    "maxKB": 20,
+    "transparent": true,
+    "paths": [
+      "public/assets/proof/logo-5.svg"
+    ]
+  },
+  {
+    "id": "PROOF-LOGO-6",
+    "group": "Proof",
+    "where": "/ (proof strip)",
+    "w": 240,
+    "h": 48,
+    "format": "SVG",
+    "maxKB": 20,
+    "transparent": true,
+    "paths": [
+      "public/assets/proof/logo-6.svg"
+    ]
+  }
+]

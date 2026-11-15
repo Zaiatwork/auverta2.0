@@ -1,0 +1,30 @@
+{
+  "_note": "Single route list for verify, shots and sitemap checks. Add slugs here as content lands.",
+  "routes": [
+    "/",
+    "/work",
+    "/work/nano-banana",
+    "/work/meet-auva",
+    "/work/zero-juggling",
+    "/work/execution",
+    "/work/founders",
+    "/services",
+    "/services/web-design-development",
+    "/services/branding-identity",
+    "/services/ai-content",
+    "/services/digital-marketing",
+    "/services/graphic-design-video",
+    "/start/startups",
+    "/start/small-business",
+    "/start/established-brands",
+    "/pricing",
+    "/method",
+    "/studio",
+    "/journal",
+    "/faq",
+    "/contact",
+    "/privacy",
+    "/terms"
+  ],
+  "lighthouse": ["/", "/work", "/services", "/pricing", "/contact"]
+}

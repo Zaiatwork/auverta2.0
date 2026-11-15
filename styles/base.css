@@ -1,0 +1,93 @@
+@import './tokens.css';
+
+/* Reset, typography, surfaces, grid, buttons. Lime appears only on the single primary action per screen. */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+[hidden] { display: none !important; }
+html { background: var(--violet); }
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  background: var(--violet);
+  color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  line-height: 1.5;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; }
+img, svg { display: block; max-width: 100%; }
+p { max-width: 65ch; }
+:focus-visible { outline: 3px solid var(--focus, var(--soft)); outline-offset: 3px; }
+
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+.h { font-family: var(--font-display); font-weight: 800; letter-spacing: -0.045em; line-height: 0.92; }
+.eyebrow { font-size: var(--text-14); letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.92; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.skip {
+  position: fixed; left: var(--space-2); top: -4rem; z-index: 700;
+  background: var(--soft); color: var(--ink); padding: 0.6rem 1rem; border-radius: var(--radius-pill); font-weight: 500;
+}
+.skip:focus { top: var(--space-2); }
+
+/* Surfaces */
+.sec { padding: var(--sec-m) var(--pad); }
+.sec--s { padding-block: var(--sec-s); }
+.sec--l { padding-block: var(--sec-l); }
+.on-violet { background: var(--violet); color: var(--white); }
+.on-ink { background: var(--ink); color: var(--white); }
+.on-soft { background: var(--soft); color: var(--ink); --focus: var(--violet); }
+
+/* 12-col grid (4 on mobile): children set --c / --cm */
+.g { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
+.g > * { grid-column: span var(--c, 12); }
+@media (max-width: 720px) {
+  .g { grid-template-columns: repeat(4, 1fr); }
+  .g > * { grid-column: span var(--cm, 4); }
+}
+
+/* Placeholder flag: delete these 3 rules to remove every flag */
+.ph { outline: 2px dashed color-mix(in srgb, currentColor 45%, transparent); outline-offset: 6px; position: relative; }
+.ph::before {
+  content: 'PLACEHOLDER'; position: absolute; top: -0.95rem; left: 0.75rem; z-index: 2;
+  font: 500 10px/1 var(--font-body); letter-spacing: 0.14em; background: var(--pink); color: var(--ink); padding: 3px 8px; border-radius: var(--radius-pill);
+}
+.ph--q::before { display: none; }
+
+/* Buttons: primary is the one lime element on a screen; soft and ink are secondary */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-1);
+  font-weight: 500; padding: 0.85rem 1.5rem; border-radius: var(--radius-pill); border: 0; cursor: pointer;
+  font-size: var(--text-16); min-height: 44px;
+  transition: transform 0.35s var(--ease-in), box-shadow 0.35s var(--ease-in);
+}
+.btn:hover { transform: translateY(-3px); box-shadow: 0 6px 0 var(--ink); }
+.btn--primary { background: var(--lime); color: var(--ink); }
+.btn--soft { background: var(--soft); color: var(--ink); }
+.btn--ink { background: var(--ink); color: var(--white); }
+.on-soft .btn--ink:hover { box-shadow: 0 6px 0 var(--violet); }
+
+.pill {
+  background: transparent; border: 0; cursor: pointer; font-weight: 500; font-size: var(--text-14);
+  padding: 0.7rem 1.1rem; min-height: 44px; border-radius: var(--radius-pill);
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, currentColor 50%, transparent);
+  transition: background 0.3s var(--ease-in), color 0.3s, box-shadow 0.3s;
+}
+.pill:hover, .pill[aria-pressed='true'] { background: var(--white); color: var(--ink); box-shadow: inset 0 0 0 2px var(--white); }
+.on-soft .pill:hover, .on-soft .pill[aria-pressed='true'] { background: var(--ink); color: var(--white); box-shadow: inset 0 0 0 2px var(--ink); }
+
+/* Hide the native cursor only while the custom one is running */
+html[data-cursor='on'] body, html[data-cursor='on'] a, html[data-cursor='on'] button, html[data-cursor='on'] summary { cursor: none; }
+
+/* Integer custom property so the preloader count can animate in pure CSS */
+@property --n { syntax: '<integer>'; initial-value: 0; inherits: false; }
+
+@keyframes bob { 50% { translate: 0 -14px; } }
+@keyframes pulse { 70% { box-shadow: 0 0 0 10px transparent; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
+}

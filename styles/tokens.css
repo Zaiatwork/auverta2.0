@@ -1,0 +1,58 @@
+/* Single source of brand tokens. Components read these variables; nothing hard-codes a color or size. */
+:root {
+  --violet: #5a1cff;
+  --ink: #0b0b12;
+  --soft: #f3efff;
+  --lime: #c8ff00; /* action/emphasis only: one lime element per screen */
+  --pink: #ff3fa4; /* small accent; set ink text on pink */
+  --white: #ffffff;
+  --lilac: #d9ccff; /* work tint only */
+  --violet-light: #9a74ff; /* Auva body gradient only */
+  --violet-deep: #4510d6;
+
+  --font-display: var(--font-bricolage), 'Arial Black', sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+
+  --text-12: 0.75rem;
+  --text-14: 0.875rem;
+  --text-16: 1rem;
+  --text-20: 1.25rem;
+  --text-28: 1.75rem;
+  --text-40: 2.5rem;
+  --text-64: 4rem;
+  --text-display: clamp(2.4rem, 6.5vw, 6rem);
+
+  --space-1: 0.5rem; /* 8px steps */
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-6: 3rem;
+  --space-8: 4rem;
+  --space-12: 6rem;
+  --space-16: 8rem;
+
+  --text-hero: clamp(3rem, 11.5vw, 11.5rem);
+  --sec-s: clamp(3rem, 6vw, 4.5rem); /* section rhythm */
+  --sec-m: clamp(4.5rem, 9vw, 7rem);
+  --sec-l: clamp(6rem, 13vw, 10rem);
+  --pad: clamp(1.25rem, 4vw, 3.5rem); /* page gutter */
+  --gap: clamp(0.75rem, 1.6vw, 1.5rem);
+
+  --radius-card: 28px;
+  --radius-pill: 999px;
+
+  --grid-cols: 4;
+  --grid-gap: var(--space-2);
+  --gutter: var(--space-2);
+
+  --ease-in: cubic-bezier(0.16, 1, 0.3, 1); /* expo.out: entrances */
+  --ease-transition: cubic-bezier(0.87, 0, 0.13, 1); /* expo.inOut: transitions */
+}
+
+@media (min-width: 768px) {
+  :root {
+    --grid-cols: 12;
+    --grid-gap: var(--space-3);
+    --gutter: var(--space-6);
+  }
+}
