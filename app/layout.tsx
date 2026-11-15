@@ -1,6 +1,5 @@
-import type { Metadata, Viewport } from 'next'
-import localFont from 'next/font/local'
-import { Montserrat } from 'next/font/google'
+﻿import type { Metadata, Viewport } from 'next'
+import { Montserrat, Bricolage_Grotesque } from 'next/font/google'
 import './globals.css'
 import './namma.css'
 import NammaNavigation from '@/components/namma/NammaNavigation'
@@ -10,7 +9,7 @@ import GSAPProvider from '@/components/providers/GSAPProvider'
 import SmoothScroll from '@/components/common/SmoothScroll'
 import { SITE_URL } from '@/lib/content'
 
-const display = localFont({ src: './fonts/GHIGA.otf', weight: '400', variable: '--font-ghiga', display: 'swap' })
+const display = Bricolage_Grotesque({ subsets: ['latin'], weight: ['800'], variable: '--font-ghiga', display: 'swap' })
 const body = Montserrat({ subsets: ['latin'], weight: ['300', '400', '500', '600'], variable: '--font-montserrat', display: 'swap' })
 
 export const metadata: Metadata = {
