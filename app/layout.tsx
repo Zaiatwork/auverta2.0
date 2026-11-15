@@ -1,41 +1,26 @@
 ﻿import type { Metadata, Viewport } from 'next'
-import { Montserrat, Bricolage_Grotesque } from 'next/font/google'
+import { Boldonse, Inter } from 'next/font/google'
 import './globals.css'
-import './namma.css'
-import NammaNavigation from '@/components/namma/NammaNavigation'
-import NammaFooter from '@/components/namma/NammaFooter'
-import CustomCursor from '@/components/common/CustomCursor'
-import GSAPProvider from '@/components/providers/GSAPProvider'
-import SmoothScroll from '@/components/common/SmoothScroll'
 import { SITE_URL } from '@/lib/content'
 
-const display = Bricolage_Grotesque({ subsets: ['latin'], weight: ['800'], variable: '--font-ghiga', display: 'swap' })
-const body = Montserrat({ subsets: ['latin'], weight: ['300', '400', '500', '600'], variable: '--font-montserrat', display: 'swap' })
+// Fonts from the Figma frame. Both are open-source (OFL), so nothing licensed is committed.
+const display = Boldonse({ subsets: ['latin'], weight: '400', variable: '--font-boldonse', display: 'swap' })
+const body = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: 'Auverta Studio | We think, craft and design', template: '%s | Auverta Studio' },
-  description: 'Auverta is a multidisciplinary creative studio: brand architecture, bespoke Next.js & Webflow development, 3D experiences, and growth.',
-  openGraph: { siteName: 'Auverta Studio', type: 'website', images: [{ url: '/og.png', width: 1200, height: 630, alt: 'Auverta Studio' }] },
+  title: { default: 'Auverta Studio', template: '%s | Auverta Studio' },
+  description: 'Auverta builds brands and growth.',
+  openGraph: { siteName: 'Auverta Studio', type: 'website' },
   twitter: { card: 'summary_large_image' },
 }
 
-export const viewport: Viewport = { themeColor: '#09090F', colorScheme: 'dark' }
+export const viewport: Viewport = { themeColor: '#ffffff', colorScheme: 'light' }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`is-dark ${display.variable} ${body.variable}`}>
-      <body className="bg-abyss text-ghost-white overflow-x-hidden antialiased">
-        <GSAPProvider>
-          <SmoothScroll />
-          <NammaNavigation />
-          <main id="main" className="page-main will-change-transform">
-            {children}
-            <NammaFooter />
-          </main>
-          <CustomCursor />
-        </GSAPProvider>
-      </body>
+    <html lang="en" className={`${display.variable} ${body.variable}`}>
+      <body className="antialiased">{children}</body>
     </html>
   )
 }

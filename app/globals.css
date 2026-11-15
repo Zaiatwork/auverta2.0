@@ -1,19 +1,33 @@
 @import 'tailwindcss';
 
-/* "Futuristic Luxury" brand tokens. Hex codes are fixed. In Tailwind v4 @theme both generates the
-   utilities (bg-abyss, text-toxic-lime, ...) and emits the :root custom properties. */
+/* Single source of tokens. Values come from Figma file Qh1zXpU1ROMGVd7lY0Llqi, frame "Auverta Desktop" (3:2).
+   In Tailwind v4 @theme both generates the utilities (bg-violet, text-night, ...) and emits the :root variables. */
 @theme {
-  --color-abyss: #09090f; /* Abyss: near-black base canvas */
-  --color-deep-layer: #1c1a2e; /* Deep Layer: cards, modals, surface */
-  --color-electric-violet: #5821fa; /* Electric Violet: brand hero, glows, keylines */
-  --color-toxic-lime: #c4ff00; /* Toxic Lime: CTA pop, buttons, badges, magnetic cursor */
-  --color-hot-magenta: #ff2daf; /* Hot Magenta: energy burst, drops, highlights */
-  --color-ghost-white: #f5f0ff; /* Ghost White: primary text, headings */
-  --color-paper: #f5f0ff; /* light canvas; same value as ghost-white but never remapped by .scope-light */
+  --color-violet: #5a1cff; /* hero title, brand surface */
+  --color-night: #130d2a; /* nav pill, dark text */
+  --color-logo-ink: #1a0a4a; /* AUVERTA wordmark */
+  --color-pink: #ff3fa4; /* Let's Connect button */
+  --color-fog: #efefef; /* text on pink button */
+  --color-lime: #c8ff00; /* accent surface */
+  --color-plum: #30196c; /* section panels (later sections) */
+  --color-mist: #ededed;
+  --color-stone: #b8b8b8;
+  --color-wine: #782a53;
+  --color-olive: #6f8d03;
 
-  --font-display: var(--font-ghiga), 'Arial Black', sans-serif;
-  --font-sans: var(--font-montserrat), system-ui, sans-serif;
+  /* Fonts used in the Figma frame: Boldonse (display), Inter (UI). Both open-source, loaded in app/layout.tsx. */
+  --font-display: var(--font-boldonse), 'Arial Black', sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
   --ease-fluid: cubic-bezier(0.32, 0.72, 0, 1);
+
+  /* LEGACY (old base, used only by routes not rebuilt yet). Delete when those pages are redone. */
+  --color-abyss: #09090f;
+  --color-deep-layer: #1c1a2e;
+  --color-electric-violet: #5821fa;
+  --color-toxic-lime: #c4ff00;
+  --color-hot-magenta: #ff2daf;
+  --color-ghost-white: #f5f0ff;
+  --color-paper: #f5f0ff;
 }
 
 :root {
@@ -105,25 +119,24 @@
 
 html {
   scroll-behavior: smooth;
-  background: var(--color-abyss);
+  background: #fff;
 }
 
 body {
-  background-color: var(--color-abyss);
-  color: var(--color-ghost-white);
+  background-color: #fff;
+  color: var(--color-night);
   font-family: var(--font-sans);
-  font-weight: 300;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: var(--color-toxic-lime);
-  color: var(--color-abyss);
+  background: var(--color-lime);
+  color: var(--color-night);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-toxic-lime);
+  outline: 2px solid var(--color-violet);
   outline-offset: 3px;
 }
 
@@ -162,7 +175,32 @@ body {
   }
 }
 
+/* Hero motion: FadeIn and the line-by-line title reveal (transform and opacity only). */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+@keyframes line-up {
+  from {
+    transform: translateY(105%);
+  }
+}
+.fade-in {
+  animation: fade-in 0.8s var(--ease-out-expo) both;
+}
+.line-reveal > span {
+  display: inline-block;
+  animation: line-up 0.9s var(--ease-out-expo) both;
+  animation-delay: var(--d, 0ms);
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .fade-in,
+  .line-reveal > span {
+    animation: none;
+  }
   html {
     scroll-behavior: auto;
   }
