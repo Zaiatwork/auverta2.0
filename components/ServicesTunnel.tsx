@@ -20,8 +20,8 @@ const ITEMS: Item[] = [
 
 // Tuning knobs
 // R: helix radius (px). dTheta: turn per card (deg). dY: drop per card (px).
-const DESKTOP = { R: 760, dTheta: 48, dY: 120, perspective: 1200 }
-const COMPACT = { R: 520, dTheta: 55, dY: 110, perspective: 900 }
+const DESKTOP = { R: 640, dTheta: 58, dY: 190, perspective: 1200 }
+const COMPACT = { R: 460, dTheta: 62, dY: 170, perspective: 900 }
 type Geo = typeof DESKTOP
 
 const MotionLink = motion.create(Link)
@@ -39,14 +39,14 @@ function useCompact() {
 }
 
 function Card({ item, i, active, geo }: { item: Item; i: number; active: MotionValue<number>; geo: Geo }) {
-  // Cards far from the active one fade into the dark (depth fog)
-  const opacity = useTransform(active, (a) => {
+  // Cards far from the active one are darkened, not transparent, so nothing shows through a front card
+  const dim = useTransform(active, (a) => {
     const d = Math.abs(i - a)
-    if (d < 0.5) return 1
-    if (d < 1.5) return 1 - (d - 0.5) * 0.65
-    return Math.max(0.1, 0.35 - (d - 1.5) * 0.15)
+    if (d < 0.5) return 0
+    if (d < 1.5) return (d - 0.5) * 0.6
+    return Math.min(0.9, 0.6 + (d - 1.5) * 0.15)
   })
-  const pointerEvents = useTransform(opacity, (o) => (o > 0.6 ? 'auto' : 'none')) as MotionValue<'auto' | 'none'>
+  const pointerEvents = useTransform(dim, (o) => (o < 0.4 ? 'auto' : 'none')) as MotionValue<'auto' | 'none'>
 
   return (
     // The slot is full size, so its transform-origin is the helix axis.
@@ -58,7 +58,7 @@ function Card({ item, i, active, geo }: { item: Item; i: number; active: MotionV
       <MotionLink
         href={item.href}
         aria-label={item.title}
-        style={{ opacity, pointerEvents }}
+        style={{ pointerEvents }}
         className="group pointer-events-auto block w-[62vw] max-w-[380px] rounded-[28px] focus-visible:outline focus-visible:outline-4 focus-visible:outline-lime md:w-[32vw] md:max-w-[600px] md:rounded-[36px]"
       >
         <span className={`relative block aspect-[4/5] overflow-hidden rounded-[28px] md:aspect-[3/2] md:rounded-[36px] ${item.tone}`}>
@@ -75,9 +75,10 @@ function Card({ item, i, active, geo }: { item: Item; i: number; active: MotionV
               </span>
             </span>
           )}
-          <span className="absolute inset-0 grid place-items-center bg-black/20 p-4 text-center font-display text-[5.6vw] uppercase leading-[1.3] tracking-wide text-white transition-colors group-hover:bg-black/5 md:text-[2.2vw]">
+          <span className="absolute inset-0 grid place-items-center bg-black/20 p-4 text-center font-display text-[6vw] uppercase leading-[1.3] tracking-wide text-white transition-colors group-hover:bg-black/5 md:text-[1.8vw]">
             {item.title}
           </span>
+          <motion.span aria-hidden="true" style={{ opacity: dim }} className="pointer-events-none absolute inset-0 z-10 bg-night" />
         </span>
       </MotionLink>
     </div>
@@ -119,7 +120,7 @@ export default function ServicesTunnel({
   }
 
   const links = (
-    <nav aria-label="All services" className="bg-night px-[5vw] pb-16 text-white">
+    <nav aria-label="All services" className="sr-only focus-within:not-sr-only focus-within:bg-night focus-within:px-[5vw] focus-within:py-6 focus-within:text-white">
       <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/70">
         {ITEMS.map((it) => (
           <li key={it.title}><Link href={it.href} className="underline-offset-4 hover:text-white hover:underline">{it.title}</Link></li>
@@ -155,7 +156,7 @@ export default function ServicesTunnel({
         style={{ height: `${(ITEMS.length + 1) * 100}vh` }}
       >
         <div className="sticky top-0 h-screen overflow-hidden" style={{ perspective: geo.perspective }} onPointerMove={onMove}>
-          <h2 className="pointer-events-none absolute left-[5vw] top-24 z-20 font-display text-[14vw] uppercase leading-none md:text-[7vw]">
+          <h2 className="pointer-events-none absolute left-[5vw] top-[11vh] z-20 font-display text-[11vw] uppercase leading-none md:text-[4.6vw]">
             {title}
           </h2>
           {/* wrappers are pointer-events-none so they never swallow clicks meant for the cards */}

@@ -126,7 +126,7 @@ body {
   background-color: #fff;
   color: var(--color-night);
   font-family: var(--font-sans);
-  overflow-x: hidden;
+  overflow-x: clip; /* clip, not hidden: hidden would break position: sticky in the home scenes */
   -webkit-font-smoothing: antialiased;
 }
 

@@ -1,7 +1,6 @@
 import Hero from '@/components/hero/Hero'
 import ServicesTunnel from '@/components/ServicesTunnel'
-import EdgeHeading from '@/components/EdgeHeading'
-import EdgeStatement from '@/components/EdgeStatement'
+import EdgeScene from '@/components/EdgeScene'
 import ValueCards from '@/components/ValueCards'
 
 export default function HomePage() {
@@ -9,8 +8,7 @@ export default function HomePage() {
     <main id="main">
       <Hero />
       <ServicesTunnel />
-      <EdgeHeading />
-      <EdgeStatement />
+      <EdgeScene />
       <ValueCards />
     </main>
   )

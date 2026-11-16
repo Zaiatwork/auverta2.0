@@ -71,7 +71,7 @@ export default function ValueCards() {
   const reduce = useReducedMotion()
   const arrivals = useMemo(() => CARDS.map(() => motionValue(0)), [])
   return (
-    <section id="why" className="bg-night pb-[14vh] pt-[27vh] text-white">
+    <section id="why" className="bg-night pb-[14vh] pt-[12vh] text-white">
       <ul>
         {CARDS.map((c, i) => (
           <StackItem key={c.title} card={c} i={i} arrivals={arrivals} reduce={reduce} />
