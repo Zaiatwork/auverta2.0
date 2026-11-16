@@ -15,13 +15,13 @@ function Word({ word, progress, range }: { word: string; progress: MotionValue<n
 
 // Scene length. Raise it for a slower scene, lower it to cut dead scroll.
 const SCENE_HEIGHT_VH = 360
-const STATEMENT_TOP_VH = 50 // T: where the statement rests, in vh from the top of the viewport
+const STATEMENT_TOP_VH = 54 // T: where the statement rests, in vh from the top of the viewport (reference image measures ~54)
 const PK = 0.4 // key moment of the scene (progress 0..1): all anchors below are measured here
 // Statement words light up one after another between FROM and FROM + SPAN (scene progress).
 const FROM = 0.3
 const SPAN = 0.4
 // 1 = each word fades over its whole slot (smooth), 0.2 = almost an instant switch per word
-const WORD_FADE = 0.25
+const WORD_FADE = 0.50
 
 // shortcut: read on scroll only, so a window resize applies at the next scroll event; fix if resize-while-pinned matters
 const vh = () => (typeof window === 'undefined' ? 8 : window.innerHeight / 100)
@@ -39,7 +39,8 @@ export default function EdgeScene() {
   const headX = useTransform(p, [0, 0.55], ['8%', '-38%'])
   // anchor-based positions (px, top edges): start, value at PK, end
   const T = STATEMENT_TOP_VH
-  const headY = useTransform(p, (v) => along(v, [40 * vh(), (T - 50) * vh(), -45 * vh()]))
+  // heading rests at its own top-0 position at PK (reference: letters end ~24vh), independent of T
+  const headY = useTransform(p, (v) => along(v, [40 * vh(), 0, -45 * vh()]))
   const cakeY = useTransform(p, (v) => {
     const h = (isMobile() ? 28 : 17.9) * 1.5 * vw() // 2:3 photo height
     return along(v, [60 * vh(), (T - 6.5) * vh() - h, -100 * vh()])
