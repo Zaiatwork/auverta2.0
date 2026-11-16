@@ -28,6 +28,7 @@ const FROM = 0.3
 const SPAN = 0.4
 // 1 = each word fades over its whole slot (smooth), 0.2 = almost an instant switch per word
 const WORD_FADE = 0.50
+const END = FROM + SPAN // scene progress at which the last word is lit and the section ends
 const GROUP = 2 // words that light up together (1 = one by one)
 const HIGHLIGHT = ['bold', 'ideas'] // words in lime, lowercase, no punctuation ([] = off)
 
@@ -40,7 +41,9 @@ const along = (p: number, ys: [number, number, number]) => transform(p, [0, PK, 
 export default function EdgeScene() {
   const ref = useRef<HTMLElement>(null)
   const reduce = useReducedMotion()
-  const { scrollYProgress: p } = useScroll({ target: ref, offset: ['start start', 'end end'] })
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] })
+  // The scene ends the moment the last word is lit: scroll 0..1 maps to progress 0..END, so every map below keeps its speed
+  const p = useTransform(scrollYProgress, [0, 1], [0, END])
   const words = STATEMENT.split(' ')
   const groups = Math.ceil(words.length / GROUP)
 
@@ -76,7 +79,7 @@ export default function EdgeScene() {
 
   return (
     // overflow-x: clip does not break sticky; the stage itself is NOT clipped
-    <section ref={ref} className="relative bg-night text-white" style={{ height: `${SCENE_HEIGHT_VH}vh`, overflowX: 'clip' }}>
+    <section ref={ref} className="relative bg-night text-white" style={{ height: `${100 + END * (SCENE_HEIGHT_VH - 100)}vh`, overflowX: 'clip' }}>
       <div className="sticky top-0 h-screen">
         {/* heading, clipped to its own window only */}
         <motion.div style={{ y: headY }} className="absolute left-[12.8vw] top-0 z-0 w-[74.4vw] overflow-hidden">
