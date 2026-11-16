@@ -8,9 +8,15 @@ const HEADING = 'Why Auverta / One roof / Zero juggling / ' // DRAFT copy
 const STATEMENT =
   'One team, one system. We turn bold ideas into brands, sites and content that grow your business.' // DRAFT copy
 
-function Word({ word, progress, range }: { word: string; progress: MotionValue<number>; range: [number, number] }) {
+function Word({ word, progress, range, accent = false }: {
+  word: string; progress: MotionValue<number>; range: [number, number]; accent?: boolean
+}) {
   const opacity = useTransform(progress, range, [0.2, 1])
-  return <motion.span style={{ opacity }} className="mr-[0.25em] inline-block">{word}</motion.span>
+  return (
+    <motion.span style={{ opacity }} className={`mr-[0.25em] inline-block ${accent ? 'text-lime' : ''}`}>
+      {word}
+    </motion.span>
+  )
 }
 
 // Scene length. Raise it for a slower scene, lower it to cut dead scroll.
@@ -22,6 +28,8 @@ const FROM = 0.3
 const SPAN = 0.4
 // 1 = each word fades over its whole slot (smooth), 0.2 = almost an instant switch per word
 const WORD_FADE = 0.50
+const GROUP = 2 // words that light up together (1 = one by one)
+const HIGHLIGHT = ['bold', 'ideas'] // words in lime, lowercase, no punctuation ([] = off)
 
 // shortcut: read on scroll only, so a window resize applies at the next scroll event; fix if resize-while-pinned matters
 const vh = () => (typeof window === 'undefined' ? 8 : window.innerHeight / 100)
@@ -34,6 +42,7 @@ export default function EdgeScene() {
   const reduce = useReducedMotion()
   const { scrollYProgress: p } = useScroll({ target: ref, offset: ['start start', 'end end'] })
   const words = STATEMENT.split(' ')
+  const groups = Math.ceil(words.length / GROUP)
 
   // heading: slides left and leaves through the top
   const headX = useTransform(p, [0, 0.55], ['8%', '-38%'])
@@ -101,9 +110,18 @@ export default function EdgeScene() {
           className="absolute left-[12.8vw] right-[12.8vw] z-20 text-[8.5vw] font-medium leading-[1.2] text-white mix-blend-difference md:text-[3.95vw]"
         >
           {words.map((w, i) => {
-            const start = FROM + (i / words.length) * SPAN
-            const end = start + (SPAN / words.length) * WORD_FADE
-            return <Word key={i} word={w} progress={p} range={[start, end]} />
+            const g = Math.floor(i / GROUP)
+            const start = FROM + (g / groups) * SPAN
+            const end = start + (SPAN / groups) * WORD_FADE
+            return (
+              <Word
+                key={i}
+                word={w}
+                progress={p}
+                accent={HIGHLIGHT.includes(w.toLowerCase().replace(/[^a-z]/g, ''))}
+                range={[start, end]}
+              />
+            )
           })}
         </motion.p>
       </div>
