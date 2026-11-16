@@ -15,6 +15,8 @@ function Word({ word, progress, range }: { word: string; progress: MotionValue<n
 
 // Scene length. Raise it for a slower scene, lower it to cut dead scroll.
 const SCENE_HEIGHT_VH = 360
+// Where the statement rests on screen, in vh from the top of the viewport (was 47). Lower number = higher up.
+const STATEMENT_TOP_VH = 32
 
 export default function EdgeScene() {
   const ref = useRef<HTMLElement>(null)
@@ -30,7 +32,7 @@ export default function EdgeScene() {
   const frameY = useTransform(p, [0, 1], ['70vh', '-100vh'])
   const coneY = useTransform(p, [0.3, 1], ['110vh', '-80vh'])
   // statement enters from the bottom, then stays at 47vh while its words fill in
-  const textY = useTransform(p, [0.25, 0.5], ['62vh', '0vh'])
+  const textY = useTransform(p, [0.25, 0.5], [`${100 - STATEMENT_TOP_VH + 5}vh`, '0vh'])
   // right photo changes frame while it moves
   const f1 = useTransform(p, [0.2, 0.3], [1, 0])
   const f2 = useTransform(p, [0.2, 0.3, 0.45, 0.55], [0, 1, 1, 0])
@@ -78,8 +80,8 @@ export default function EdgeScene() {
         </motion.div>
 
         <motion.p
-          style={{ y: textY }}
-          className="absolute left-[12.8vw] right-[12.8vw] top-[47vh] z-20 text-[8.5vw] font-medium leading-[1.2] text-white mix-blend-difference md:text-[3.95vw]"
+          style={{ y: textY, top: `${STATEMENT_TOP_VH}vh` }}
+          className="absolute left-[12.8vw] right-[12.8vw] z-20 text-[8.5vw] font-medium leading-[1.2] text-white mix-blend-difference md:text-[3.95vw]"
         >
           {words.map((w, i) => (
             <Word key={i} word={w} progress={p} range={[0.45 + (i / words.length) * 0.4, 0.45 + ((i + 1) / words.length) * 0.4]} />
