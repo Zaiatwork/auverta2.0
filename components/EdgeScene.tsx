@@ -21,7 +21,8 @@ function Word({ word, progress, range, accent = false }: {
 
 // Scene length. Raise it for a slower scene, lower it to cut dead scroll.
 const SCENE_HEIGHT_VH = 360
-const STATEMENT_TOP_VH = 54 // T: where the statement rests, in vh from the top of the viewport (reference image measures ~54)
+const STATEMENT_TOP_VH = 54 // T: anchor the photo positions are measured from (reference image measures ~54)
+const TEXT_TOP_VH = 46 // where the statement paragraph itself rests, vh from the top (lower number = higher up); photos stay at T
 const PK = 0.4 // key moment of the scene (progress 0..1): all anchors below are measured here
 // Statement words light up one after another between FROM and FROM + SPAN (scene progress).
 const FROM = 0.3
@@ -55,13 +56,13 @@ export default function EdgeScene() {
   const headY = useTransform(p, (v) => along(v, [40 * vh(), 0, -45 * vh()]))
   const cakeY = useTransform(p, (v) => {
     const h = (isMobile() ? 28 : 17.9) * 1.5 * vw() // 2:3 photo height
-    return along(v, [60 * vh(), (T - 6.5) * vh() - h, -100 * vh()])
+    return along(v, [60 * vh(), (TEXT_TOP_VH - 6.5) * vh() - h, -100 * vh()])
   })
-  const frameY = useTransform(p, (v) => along(v, [80 * vh(), (T - 29.5) * vh(), -100 * vh()]))
+  const frameY = useTransform(p, (v) => along(v, [80 * vh(), ((isMobile() ? TEXT_TOP_VH : T) - 29.5) * vh(), -100 * vh()]))
   // on phones the statement wraps to 6 lines, so the bottom photo sits lower to stay clear of the text
   const coneY = useTransform(p, (v) => along(v, [110 * vh(), (T + (isMobile() ? 34 : 24)) * vh(), -70 * vh()]))
   // statement enters from the bottom early, then rests at T while its words fill in
-  const textY = useTransform(p, [0.1, 0.3], [`${100 - T + 5}vh`, '0vh'])
+  const textY = useTransform(p, [0.1, 0.3], [`${100 - TEXT_TOP_VH + 5}vh`, '0vh'])
   // right photo changes frame after the key moment
   const f1 = useTransform(p, [0.35, 0.45], [1, 0])
   const f2 = useTransform(p, [0.35, 0.45, 0.55, 0.65], [0, 1, 1, 0])
@@ -109,7 +110,7 @@ export default function EdgeScene() {
         </motion.div>
 
         <motion.p
-          style={{ y: textY, top: `${STATEMENT_TOP_VH}vh` }}
+          style={{ y: textY, top: `${TEXT_TOP_VH}vh` }}
           className="absolute left-[12.8vw] right-[12.8vw] z-20 text-[8.5vw] font-medium leading-[1.2] text-white mix-blend-difference md:text-[3.95vw]"
         >
           {words.map((w, i) => {
