@@ -10,7 +10,7 @@ Marketing site for Auverta Studio. Redesign in progress, built section by sectio
 - Status: hero + "Super Powers" (`components/ServicesTunnel.tsx`, 3D scroll cards, each a link to `/services/<slug>/`). The Figma sticky-stack bands (nodes 51:2779 to 51:2784) are NOT built. Other sections are added one at a time when the user asks.
 
 ## Stack
-Next.js App Router, TypeScript strict, Tailwind v4, next/font/google. Light JS: no smooth-scroll library. framer-motion only for `ServicesTunnel` (its one pinned section); `MaskedHeading` (hero title) uses GSAP.
+Next.js App Router, TypeScript strict, Tailwind v4, next/font/google. Light JS: no smooth-scroll library. framer-motion only for `ServicesTunnel` (its one pinned section). Hero title is `FoldText` (plain CSS, no JS dependency); `MaskedHeading` (GSAP) is kept in `components/ui/` but unused.
 
 ## Tokens
 Only in `app/globals.css` `@theme`. Components use utilities (`bg-violet`, `text-night`), never raw hex.
@@ -24,7 +24,7 @@ Licensed fonts (GHIGA, Grift) are not used and must never be committed to this p
 - A change to one thing is a one-file edit. Do not search the whole project: use `graphify-out/` or a targeted grep in one folder.
 
 ## Motion
-Only `FadeIn`, `Magnet`, the hero `MaskedHeading` reveal and the `ServicesTunnel` scroll cards. Each has a `prefers-reduced-motion` fallback. Animate transform and opacity only.
+Only `FadeIn`, `Magnet`, the hero `FoldText` reveal and the `ServicesTunnel` scroll cards. Each has a `prefers-reduced-motion` fallback. Animate transform and opacity only.
 
 ## Preview and checks
 - Push to `main` builds the GitHub Pages preview (`.github/workflows/pages.yml`). Not deployed to Hostinger yet.

@@ -223,6 +223,45 @@ body {
   }
 }
 
+/* FoldText: letters fold open like creased paper, from the bottom edge */
+.fold-root { position: relative; }
+
+/* letters near the cursor tilt back a little (hover refold) */
+.fold-tilt {
+  display: inline-block;
+  transform-origin: 50% 100%;
+  transform: perspective(var(--fold-persp, 700px)) rotateX(calc(var(--t, 0) * var(--fold-refold, 45deg)));
+  transition: transform 0.25s ease-out;
+}
+
+/* starting state: folded, hidden, darkened like a crease */
+.fold-char {
+  display: inline-block;
+  transform-origin: 50% 100%;
+  backface-visibility: hidden;
+  opacity: 0;
+  transform: perspective(var(--fold-persp, 700px)) rotateX(var(--fold-angle, 92deg));
+  filter: brightness(calc(1 - var(--fold-crease, 0.45)));
+}
+
+.fold-in .fold-char {
+  animation: fold-open var(--fold-dur, 0.65s) cubic-bezier(0.34, 1.2, 0.64, 1)
+    calc(var(--fold-delay, 0s) + var(--i) * var(--fold-stagger, 0.045s)) both;
+}
+
+@keyframes fold-open {
+  to {
+    opacity: 1;
+    transform: perspective(var(--fold-persp, 700px)) rotateX(0deg);
+    filter: brightness(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fold-char { opacity: 1; transform: none; filter: none; animation: none !important; }
+  .fold-tilt { transform: none; transition: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .fade-in,
   .line-reveal > span {
