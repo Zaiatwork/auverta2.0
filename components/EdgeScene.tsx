@@ -17,6 +17,11 @@ function Word({ word, progress, range }: { word: string; progress: MotionValue<n
 const SCENE_HEIGHT_VH = 360
 const STATEMENT_TOP_VH = 50 // T: where the statement rests, in vh from the top of the viewport
 const PK = 0.4 // key moment of the scene (progress 0..1): all anchors below are measured here
+// Statement words light up one after another between FROM and FROM + SPAN (scene progress).
+const FROM = 0.3
+const SPAN = 0.4
+// 1 = each word fades over its whole slot (smooth), 0.2 = almost an instant switch per word
+const WORD_FADE = 0.25
 
 // shortcut: read on scroll only, so a window resize applies at the next scroll event; fix if resize-while-pinned matters
 const vh = () => (typeof window === 'undefined' ? 8 : window.innerHeight / 100)
@@ -94,9 +99,11 @@ export default function EdgeScene() {
           style={{ y: textY, top: `${STATEMENT_TOP_VH}vh` }}
           className="absolute left-[12.8vw] right-[12.8vw] z-20 text-[8.5vw] font-medium leading-[1.2] text-white mix-blend-difference md:text-[3.95vw]"
         >
-          {words.map((w, i) => (
-            <Word key={i} word={w} progress={p} range={[0.3 + (i / words.length) * 0.4, 0.3 + ((i + 1) / words.length) * 0.4]} />
-          ))}
+          {words.map((w, i) => {
+            const start = FROM + (i / words.length) * SPAN
+            const end = start + (SPAN / words.length) * WORD_FADE
+            return <Word key={i} word={w} progress={p} range={[start, end]} />
+          })}
         </motion.p>
       </div>
     </section>
