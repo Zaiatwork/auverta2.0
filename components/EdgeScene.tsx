@@ -13,7 +13,7 @@ function Word({ word, progress, range, accent = false }: {
 }) {
   const opacity = useTransform(progress, range, [0.2, 1])
   return (
-    <motion.span style={{ opacity }} className={`mr-[0.25em] inline-block ${accent ? 'text-lime' : ''}`}>
+    <motion.span style={{ opacity }} className={`mr-[0.25em] inline-block ${accent ? 'text-violet' : ''}`}>
       {word}
     </motion.span>
   )
@@ -31,7 +31,7 @@ const SPAN = 0.4
 const WORD_FADE = 0.50
 const END = FROM + SPAN // scene progress at which the last word is lit and the section ends
 const GROUP = 2 // words that light up together (1 = one by one)
-const HIGHLIGHT = ['bold', 'ideas'] // words in lime, lowercase, no punctuation ([] = off)
+const HIGHLIGHT = ['bold', 'ideas'] // words in violet, lowercase, no punctuation ([] = off)
 
 // shortcut: read on scroll only, so a window resize applies at the next scroll event; fix if resize-while-pinned matters
 const vh = () => (typeof window === 'undefined' ? 8 : window.innerHeight / 100)
@@ -111,7 +111,7 @@ export default function EdgeScene() {
 
         <motion.p
           style={{ y: textY, top: `${TEXT_TOP_VH}vh` }}
-          className="absolute left-[12.8vw] right-[12.8vw] z-20 text-[8.5vw] font-medium leading-[1.2] text-white mix-blend-difference md:text-[3.95vw]"
+          className="absolute left-[12.8vw] right-[12.8vw] z-20 text-[8.5vw] font-medium leading-[1.2] text-night md:text-[3.95vw]"
         >
           {words.map((w, i) => {
             const g = Math.floor(i / GROUP)
