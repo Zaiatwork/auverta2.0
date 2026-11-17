@@ -6,7 +6,7 @@ export default function SiteFooter() {
   const head = 'text-xs uppercase tracking-[0.18em] text-white/50'
   return (
     <footer className="overflow-hidden bg-night px-5 pt-[10vh] text-white md:px-[10.8vw]">
-      <div className="grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <div className="rise grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <p className="col-span-2 max-w-[16ch] text-2xl md:col-span-1 font-semibold leading-tight tracking-tight md:text-[max(2vw,24px)]">{SITE.promise}</p>
 
         <nav aria-label="Footer">
@@ -33,7 +33,7 @@ export default function SiteFooter() {
         </div>
       </div>
 
-      <p aria-hidden className="mt-[10vh] select-none whitespace-nowrap text-center font-display text-[19vw] uppercase md:text-[11.5vw] leading-[0.9] text-white/10">
+      <p aria-hidden className="rise mt-[10vh] select-none whitespace-nowrap text-center font-display text-[19vw] uppercase md:text-[11.5vw] leading-[0.9] text-white/10">
         Auverta
       </p>
 

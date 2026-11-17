@@ -9,7 +9,7 @@ export default function Hero() {
       <SiteHeader />
       <AuvaFollower />
 
-      <h1 className="px-5 pt-[28svh] text-center font-display text-[clamp(3rem,12.5vw,5rem)] uppercase leading-[1.43] text-violet lg:pt-[17.4vw] xl:text-[6.25vw]">
+      <h1 className="px-5 pt-[22svh] text-center font-display text-[clamp(3rem,12.5vw,5rem)] uppercase leading-[1.43] text-violet lg:pt-[13vw] xl:text-[6.25vw]">
         <FoldText text={HERO.title.join('\n')} hoverRefold className="block" />
       </h1>
     </section>

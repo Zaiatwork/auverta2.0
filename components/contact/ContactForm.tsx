@@ -26,7 +26,7 @@ export default function ContactForm() {
 
   return (
     <div className="px-5 pb-[12vh] pt-[16vh] text-night md:px-[10.8vw]">
-      <h2 className="font-display text-[9vw] uppercase leading-[1.25] md:text-[4.6vw]">
+      <h2 className="font-display text-[8.5vw] uppercase leading-[1.25] tracking-[-0.02em] md:text-[4.1vw]">
         {CONTACT.title[0]}<br />
         <span className="inline-flex items-center gap-[2vw]">
           {/* eslint-disable-next-line @next/next/no-img-element -- static export, unoptimized */}

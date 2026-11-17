@@ -33,7 +33,7 @@ export default function ContactCta() {
 
   return (
     <section id="contact" className="grid min-h-svh items-center gap-10 bg-fog px-5 py-[12vh] text-night md:grid-cols-[56fr_44fr] md:gap-0 md:px-[1.2vw]">
-      <h2 className="font-display whitespace-nowrap text-[12vw] uppercase leading-[1.05] md:text-[6.3vw]">
+      <h2 className="font-display rise whitespace-nowrap text-[11vw] uppercase leading-[1.05] tracking-[-0.02em] md:text-[5.8vw]">
         {CONTACT.cta[0]}<br />
         <span className="inline-flex items-center gap-[1.4vw]">
           {/* eslint-disable-next-line @next/next/no-img-element -- static export, unoptimized */}
@@ -41,7 +41,7 @@ export default function ContactCta() {
           {CONTACT.cta[1]}
         </span>
       </h2>
-      <div className="md:pb-[4vw]">
+      <div className="rise md:pb-[4vw]">
         <p className="max-w-[24ch] text-2xl leading-snug md:text-[max(1.7vw,20px)]">{CONTACT.pitch}</p>
         <button
           ref={opener}

@@ -80,7 +80,7 @@ function Card({ item, i, active, geo }: { item: Item; i: number; active: MotionV
           <span className="absolute inset-0 grid place-items-center bg-black/20 p-4 text-center font-display text-[6vw] uppercase leading-[1.3] tracking-wide text-white transition-colors group-hover:bg-black/5 md:text-[1.8vw]">
             {item.title}
           </span>
-          <motion.span aria-hidden="true" style={{ opacity: dim }} className="pointer-events-none absolute inset-0 z-10 bg-night" />
+          <motion.span aria-hidden="true" style={{ opacity: dim }} className="pointer-events-none absolute inset-0 z-10 bg-white" />
         </span>
       </MotionLink>
     </div>
@@ -134,12 +134,12 @@ export default function ServicesTunnel({
   if (reduce) {
     return (
       <>
-        <section id={id} className="bg-night px-[5vw] py-24 text-white">
-          <h2 className="font-display text-[14vw] uppercase leading-none md:text-[7vw]">{title}</h2>
+        <section id={id} className="bg-white px-[5vw] py-24 text-night">
+          <h2 className="font-display text-[12vw] uppercase leading-none tracking-[-0.02em] md:text-[6vw]">{title}</h2>
           <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {ITEMS.map((it) => (
               <li key={it.title}>
-                <Link href={it.href} className={`block rounded-[28px] p-8 font-display text-3xl uppercase ${it.tone}`}>{it.title}</Link>
+                <Link href={it.href} className={`block rounded-[28px] p-8 font-display text-3xl uppercase text-white ${it.tone}`}>{it.title}</Link>
               </li>
             ))}
           </ul>
@@ -154,11 +154,11 @@ export default function ServicesTunnel({
       <section
         id={id}
         ref={ref}
-        className="relative bg-night text-white"
+        className="relative bg-white text-night"
         style={{ height: `${(ITEMS.length + 1) * 100}vh` }}
       >
         <div className="sticky top-0 h-screen overflow-hidden" style={{ perspective: geo.perspective }} onPointerMove={onMove}>
-          <h2 className="pointer-events-none absolute left-[5vw] top-[11vh] z-20 font-display text-[11vw] uppercase leading-none md:text-[4.6vw]">
+          <h2 className="pointer-events-none absolute left-[5vw] top-[11vh] z-20 font-display text-[10vw] uppercase leading-none tracking-[-0.02em] md:text-[4.1vw]">
             {title}
           </h2>
           {/* wrappers are pointer-events-none so they never swallow clicks meant for the cards */}
@@ -170,8 +170,8 @@ export default function ServicesTunnel({
             </motion.div>
           </motion.div>
           {/* edge vignette so cards fade into the section background */}
-          <div className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(ellipse_at_center,transparent_35%,var(--color-night)_100%)]" />
-          <p className="pointer-events-none absolute bottom-6 left-1/2 z-20 -translate-x-1/2 text-xs uppercase tracking-widest text-white/60">
+          <div className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(ellipse_at_center,transparent_35%,white_100%)]" />
+          <p className="pointer-events-none absolute bottom-6 left-1/2 z-20 -translate-x-1/2 text-xs uppercase tracking-widest text-night/60">
             Scroll · click a card
           </p>
         </div>

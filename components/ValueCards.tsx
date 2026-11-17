@@ -35,7 +35,7 @@ function BandItem({ band, i, arrivals, reduce }: {
         className={`relative overflow-hidden bg-gradient-to-br ${band.tone} px-5 pb-[8vh] pt-[14vh] text-white md:h-svh md:px-[10.8vw] md:pt-[16vh]`}
       >
         <div className="flex items-start justify-between gap-6">
-          <h2 className="text-[11vw] font-semibold leading-[1.05] tracking-[-0.04em] md:text-[max(3.3vw,30px)]">
+          <h2 className="text-[10vw] font-semibold leading-[1.05] tracking-[-0.05em] md:text-[max(3vw,28px)]">
             {band.title[0]}<br />{band.title[1]}
           </h2>
           <span className="text-[18vw] font-bold leading-none tracking-[-0.04em] md:text-[6.5vw]">

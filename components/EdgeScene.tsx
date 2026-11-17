@@ -72,7 +72,7 @@ export default function EdgeScene() {
   if (reduce) {
     return (
       <section className="bg-white px-[12.8vw] py-24 text-night">
-        <h2 className="font-display text-[11vw] uppercase leading-none md:text-[6vw]">Why Auverta</h2>
+        <h2 className="font-display text-[10vw] uppercase leading-none tracking-[-0.02em] md:text-[5.4vw]">Why Auverta</h2>
         <p className="mt-10 text-[8.5vw] font-medium leading-[1.2] md:text-[3.95vw]">{STATEMENT}</p>
       </section>
     )
@@ -86,7 +86,7 @@ export default function EdgeScene() {
         <motion.div style={{ y: headY }} className="absolute left-[12.8vw] top-0 z-0 w-[74.4vw] overflow-hidden">
           <motion.h2
             style={{ x: headX }}
-            className="w-max whitespace-nowrap font-display text-[15.5vw] uppercase leading-[1.05] md:text-[10.2vw]"
+            className="w-max whitespace-nowrap font-display text-[14vw] uppercase leading-[1.05] tracking-[-0.02em] md:text-[9.4vw]"
           >
             {HEADING}{HEADING}
           </motion.h2>
