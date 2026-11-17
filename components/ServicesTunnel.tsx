@@ -9,13 +9,13 @@ import {
 
 type Item = { title: string; href: string; img?: string; tone: string }
 
-// Titles and links are DRAFT.
+// Flow steps. Links are DRAFT (all point to /method/).
 const ITEMS: Item[] = [
-  { title: 'Web & Design Development', href: '/services/web-design-development/', tone: 'bg-gradient-to-br from-violet to-night' },
-  { title: 'Digital Marketing', href: '/services/digital-marketing/', tone: 'bg-gradient-to-br from-pink to-violet' },
-  { title: 'AI Content Creation', href: '/services/ai-content/', tone: 'bg-gradient-to-br from-night to-violet' },
-  { title: 'Creative Design', href: '/services/creative-design/', tone: 'bg-gradient-to-br from-violet to-pink' },
-  { title: 'SEO / AEO / GEO', href: '/services/seo/', tone: 'bg-gradient-to-br from-night to-pink' },
+  { title: '1. Discovery', href: '/method/', img: '/images/flow/discovery.webp', tone: 'bg-gradient-to-br from-violet to-night' },
+  { title: '2. Strategy', href: '/method/', img: '/images/flow/strategy.webp', tone: 'bg-gradient-to-br from-pink to-violet' },
+  { title: '3. Build', href: '/method/', img: '/images/flow/build.webp', tone: 'bg-gradient-to-br from-night to-violet' },
+  { title: '4. Launch', href: '/method/', img: '/images/flow/launch.webp', tone: 'bg-gradient-to-br from-violet to-pink' },
+  { title: '5. Grow', href: '/method/', img: '/images/flow/grow.webp', tone: 'bg-gradient-to-br from-night to-pink' },
 ]
 
 // Tuning knobs
@@ -23,6 +23,8 @@ const ITEMS: Item[] = [
 const DESKTOP = { R: 640, dTheta: 58, dY: 190, perspective: 1200 }
 const COMPACT = { R: 460, dTheta: 62, dY: 170, perspective: 900 }
 type Geo = typeof DESKTOP
+
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
 const MotionLink = motion.create(Link)
 
@@ -65,7 +67,7 @@ function Card({ item, i, active, geo }: { item: Item; i: number; active: MotionV
           {item.img ? (
             // eslint-disable-next-line @next/next/no-img-element -- optional card art, no image set yet
             <img
-              src={item.img} alt="" loading="lazy" decoding="async"
+              src={`${BASE}${item.img}`} alt="" loading="lazy" decoding="async"
               className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
           ) : (
@@ -86,8 +88,8 @@ function Card({ item, i, active, geo }: { item: Item; i: number; active: MotionV
 }
 
 export default function ServicesTunnel({
-  title = 'Super Powers',
-  id = 'super-powers',
+  title = 'Our Flow',
+  id = 'flow',
 }: { title?: string; id?: string }) {
   const ref = useRef<HTMLElement>(null)
   const reduce = useReducedMotion()
@@ -120,7 +122,7 @@ export default function ServicesTunnel({
   }
 
   const links = (
-    <nav aria-label="All services" className="sr-only focus-within:not-sr-only focus-within:bg-night focus-within:px-[5vw] focus-within:py-6 focus-within:text-white">
+    <nav aria-label="Our flow" className="sr-only focus-within:not-sr-only focus-within:bg-night focus-within:px-[5vw] focus-within:py-6 focus-within:text-white">
       <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/70">
         {ITEMS.map((it) => (
           <li key={it.title}><Link href={it.href} className="underline-offset-4 hover:text-white hover:underline">{it.title}</Link></li>

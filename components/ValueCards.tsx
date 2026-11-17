@@ -1,82 +1,79 @@
 'use client'
 
+import Link from 'next/link'
 import { useEffect, useMemo, useRef } from 'react'
 import {
   motion, motionValue, useMotionValueEvent, useReducedMotion, useScroll, useTransform,
   type MotionValue,
 } from 'framer-motion'
 
-type Card = { title: string; tag: string; text: string; img?: string; tone: string }
+import { SUPER_POWERS as BANDS, type SuperPower as Band } from '@/content/superPowers'
 
-// All copy is DRAFT
-const CARDS: Card[] = [
-  { title: 'One roof', tag: 'Everything in one place.', text: 'Brand, web, content and marketing run by one team, so nothing gets lost between freelancers.', tone: 'from-violet to-night' },
-  { title: 'Built to scale', tag: 'Systems, not one-offs.', text: 'Design systems and content engines that keep working as your business grows.', tone: 'from-pink to-violet' },
-  { title: 'Human + AI', tag: 'Fast, with a human eye.', text: 'AI speeds up production. People keep the ideas, taste and standards high.', tone: 'from-night to-violet' },
-  { title: 'Measured growth', tag: 'Numbers over adjectives.', text: 'Every project has clear goals and reporting, so you can see what is working.', tone: 'from-violet to-pink' },
-  { title: 'Made to last', tag: 'Built to be used.', text: 'Clean handoff, editable files and honest documentation. Yours to run after launch.', tone: 'from-night to-pink' },
-]
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
-const STACK_TOP = 14 // vh, where cards stick
-const BACK_SCALE = 0.925 // scale of the card that is covered by the next one
+const TILT = 14 // deg, how far a covered band leans back
+const BACK_SCALE = 0.9
 
-function StackItem({ card, i, arrivals, reduce }: {
-  card: Card; i: number; arrivals: MotionValue<number>[]; reduce: boolean | null
+function BandItem({ band, i, arrivals, reduce }: {
+  band: Band; i: number; arrivals: MotionValue<number>[]; reduce: boolean | null
 }) {
-  const ref = useRef<HTMLLIElement>(null)
+  const ref = useRef<HTMLElement>(null)
   const none = useMemo(() => motionValue(0), [])
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', `start ${STACK_TOP}vh`] })
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'start start'] })
   useMotionValueEvent(scrollYProgress, 'change', (v) => arrivals[i].set(v))
   useEffect(() => { arrivals[i].set(scrollYProgress.get()) }, [arrivals, i, scrollYProgress])
 
-  const driver = arrivals[i + 1] ?? none // the next card covering this one
-  const scale = useTransform(driver, [0, 1], reduce ? [1, 1] : [1, BACK_SCALE])
-  const textOpacity = useTransform(arrivals[i], [0.6, 1], reduce ? [1, 1] : [0, 1])
-  const textY = useTransform(arrivals[i], [0.6, 1], reduce ? [0, 0] : [24, 0])
+  const next = arrivals[i + 1] ?? none // the next band sliding over this one
+  const rotateX = useTransform(next, [0, 1], reduce ? [0, 0] : [0, TILT])
+  const scale = useTransform(next, [0, 1], reduce ? [1, 1] : [1, BACK_SCALE])
+  const shade = useTransform(next, [0, 1], reduce ? [0, 0] : [0, 0.35])
 
   return (
-    <li
-      ref={ref}
-      className={`${reduce ? '' : 'sticky'} list-none pb-[6.1vh]`}
-      style={{ top: `calc(${STACK_TOP}vh + ${i * 3}px)` }}
-    >
-      <motion.article
-        style={{ scale }}
-        className="mx-auto grid aspect-[3/4] w-[90vw] origin-top grid-rows-[46%_1fr] overflow-hidden rounded-[28px] bg-black md:aspect-[1.83/1] md:w-[65.2vw] md:grid-cols-2 md:grid-rows-1 md:rounded-[2.4vw]"
+    <section ref={ref} className="relative md:sticky md:top-0" style={{ zIndex: i + 1 }}>
+      <motion.div
+        style={{ rotateX, scale, transformPerspective: 1400, transformOrigin: '50% 100%' }}
+        className={`relative overflow-hidden bg-gradient-to-br ${band.tone} px-5 pb-[8vh] pt-[14vh] text-white md:h-svh md:px-[10.8vw] md:pt-[16vh]`}
       >
-        <div className={`relative bg-gradient-to-br ${card.tone}`}>
-          {card.img ? (
-            // eslint-disable-next-line @next/next/no-img-element -- optional card art, no image set yet
-            <img src={card.img} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
-          ) : (
-            <span className="absolute inset-3 grid place-items-center rounded-2xl border border-dashed border-white/40 text-center text-[10px] uppercase tracking-widest text-white/60">
-              Placeholder · image
-            </span>
-          )}
+        <div className="flex items-start justify-between gap-6">
+          <h2 className="text-[11vw] font-semibold leading-[1.05] tracking-[-0.04em] md:text-[max(3.3vw,30px)]">
+            {band.title[0]}<br />{band.title[1]}
+          </h2>
+          <span className="text-[18vw] font-bold leading-none tracking-[-0.04em] md:text-[6.5vw]">
+            {String(i + 1).padStart(2, '0')}
+          </span>
         </div>
-        <motion.div
-          style={{ opacity: textOpacity, y: textY }}
-          className="flex flex-col items-center justify-center gap-3 px-8 text-center md:gap-[1.2vw] md:px-[4vw]"
-        >
-          <h3 className="font-display text-[11vw] uppercase leading-[1.25] md:text-[4vw]">{card.title}</h3>
-          <p className="text-lg text-lime md:text-[1.35vw]">{card.tag}</p>
-          <p className="max-w-[28ch] text-sm text-white/60 md:text-[max(0.8vw,13px)]">{card.text}</p>
-        </motion.div>
-      </motion.article>
-    </li>
+
+        <div className="relative mt-[5vh] border border-white/25 p-6 pb-14 md:p-[1.6vw] md:pb-[3.4vw]">
+          <p className="max-w-[52ch] text-lg font-semibold leading-tight tracking-tight md:text-[max(1.35vw,17px)]">{band.text}</p>
+          <Link
+            href={band.href}
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 whitespace-nowrap rounded-full bg-white px-7 py-3 text-sm text-night transition-transform hover:scale-105"
+          >
+            Explore in detail
+          </Link>
+        </div>
+
+        <div className={`mt-[7vh] grid gap-3 rounded-[24px] bg-white/15 p-3 md:gap-[0.8vw] md:p-[0.9vw] ${band.imgs.length > 1 ? 'md:grid-cols-2' : ''}`}>
+          {band.imgs.map((src) => (
+            // eslint-disable-next-line @next/next/no-img-element -- static export, unoptimized
+            <img key={src} src={`${BASE}/images/super-power/${src}`} alt="" loading="lazy" decoding="async" className="aspect-video w-full rounded-[18px] object-cover md:aspect-auto md:h-[34vh]" />
+          ))}
+        </div>
+
+        <motion.div aria-hidden style={{ opacity: shade }} className="pointer-events-none absolute inset-0 bg-black" />
+      </motion.div>
+    </section>
   )
 }
 
 export default function ValueCards() {
   const reduce = useReducedMotion()
-  const arrivals = useMemo(() => CARDS.map(() => motionValue(0)), [])
+  const arrivals = useMemo(() => BANDS.map(() => motionValue(0)), [])
   return (
-    <section id="why" className="bg-night pb-[14vh] pt-[12vh] text-white">
-      <ul>
-        {CARDS.map((c, i) => (
-          <StackItem key={c.title} card={c} i={i} arrivals={arrivals} reduce={reduce} />
-        ))}
-      </ul>
-    </section>
+    <div id="super-powers" className="bg-white">
+      {BANDS.map((b, i) => (
+        <BandItem key={b.title[0]} band={b} i={i} arrivals={arrivals} reduce={reduce} />
+      ))}
+    </div>
   )
 }
